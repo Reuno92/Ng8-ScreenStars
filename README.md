@@ -1,7 +1,10 @@
-# MovieStar
+# ScreenStars
 
 ## Project introduction
 The project is based on TheMovieDatabase API.
+
+## Kanban project
+Link: https://trello.com/b/gDDKFSyC/screenstars
 
 ## Structure
 
