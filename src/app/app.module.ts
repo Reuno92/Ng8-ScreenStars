@@ -13,7 +13,6 @@ const THIRD_PARTY_MODULES = [
 // App Component
 import { LayoutTemplateComponent } from './template/layout-template/layout-template.component';
 import { LayoutHeaderComponent } from './template/layout-template/layout-header/layout-header.component';
-import { LayoutMainComponent } from './template/layout-template/layout-main/layout-main.component';
 import { LayoutFooterComponent } from './template/layout-template/layout-footer/layout-footer.component';
 import { HomeComponent } from './components/home/home.component';
 import { NotFoundComponent } from './components/not-found/not-found.component';
@@ -21,7 +20,6 @@ import { NotFoundComponent } from './components/not-found/not-found.component';
 const LAYOUT_COMPONENTS = [
   LayoutTemplateComponent,
   LayoutHeaderComponent,
-  LayoutMainComponent,
   LayoutFooterComponent,
 ];
 

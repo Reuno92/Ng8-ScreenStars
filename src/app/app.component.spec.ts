@@ -1,81 +1,73 @@
-import {async, getTestBed, inject, TestBed} from '@angular/core/testing';
-import {RouterTestingModule, SpyNgModuleFactoryLoader} from '@angular/router/testing';
+import {async, ComponentFixture, fakeAsync, TestBed, tick} from '@angular/core/testing';
+import {RouterTestingModule} from '@angular/router/testing';
 import {AppComponent} from './app.component';
 import {HomeComponent} from "./components/home/home.component";
 import {Router} from "@angular/router";
-import {Location, LocationStrategy} from "@angular/common";
-import {MockLocationStrategy, SpyLocation} from "@angular/common/testing";
-import {NgModuleFactory} from "@angular/core";
+import {CUSTOM_ELEMENTS_SCHEMA, DebugElement} from "@angular/core";
+import {Location } from "@angular/common";
+import {routes} from "./app-routing.module";
+import {LayoutTemplateComponent} from "./template/layout-template/layout-template.component";
+import {NotFoundComponent} from "./components/not-found/not-found.component";
+import {LayoutHeaderComponent} from "./template/layout-template/layout-header/layout-header.component";
+import {LayoutFooterComponent} from "./template/layout-template/layout-footer/layout-footer.component";
 
 describe('AppComponent', () => {
+  let fixture: ComponentFixture<AppComponent>;
+  let debugElement: DebugElement;
+  let app: any;
 
-  let location, router;
+  let location: Location;
+  let router: Router;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
       imports: [
-        RouterTestingModule.withRoutes([
-          {
-            path: '', component: HomeComponent
-          }
-        ])
+        RouterTestingModule.withRoutes(routes)
       ],
       declarations: [
-        AppComponent, HomeComponent
+        AppComponent,
+        HomeComponent,
+        LayoutTemplateComponent,
+        LayoutHeaderComponent,
+        LayoutFooterComponent,
+        NotFoundComponent
       ],
-      providers: [
-        {
-          provide: Location, useClass: SpyLocation
-        },
-        {
-          provide: LocationStrategy, useClass: MockLocationStrategy
-        },
-        {
-          provide: NgModuleFactory, useClass: SpyNgModuleFactoryLoader
-        }
-      ]
+      providers: [],
     }).compileComponents();
-    let injector = getTestBed();
-    location = injector.get(Location);
-    router = injector.get(Router);
+
+    fixture = TestBed.createComponent(AppComponent);
+    debugElement = fixture.debugElement;
+    app = debugElement.componentInstance;
+
+    router = TestBed.get(Router);
+    location = TestBed.get(Location);
+    router.initialNavigation();
   }));
 
-  beforeEach(
-    inject(
-      [Router, Location],
-      (_router: Router, _location: Location) => {
-        router = _router;
-        location = _location;
-      }
-    )
-  );
-
   it('should create the app', () => {
-    const fixture = TestBed.createComponent(AppComponent);
-    const app = fixture.debugElement.componentInstance;
     expect(app).toBeTruthy();
   });
 
   it(`should have as title 'MovieStar'`, () => {
-    const fixture = TestBed.createComponent(AppComponent);
-    const app = fixture.debugElement.componentInstance;
     expect(app.title).toEqual('MovieStar');
   });
 
-  xit('should render title in a h1 tag', () => {
-    const fixture = TestBed.createComponent(AppComponent);
-    fixture.detectChanges();
-    const compiled = fixture.debugElement.nativeElement;
-    expect(compiled.querySelector('h1').textContent).toContain('Welcome to MovieStar!');
-  });
+  it('navigate to "" redirects you to /', fakeAsync(() => {
+    router.navigate(['']);
+    tick(50);
+    expect(location.path()).toBe('/');
+  }));
 
-  it('should go home', () => {
-    let fixture = TestBed.createComponent(AppComponent);
-    fixture.detectChanges();
-    router.navigate([''])
-      .then(() => {
-        expect(location.path()).toBe('/');
-      })
-  });
+  it('navigate to "tgz" redirects you to not-found', fakeAsync(() => {
+    router.navigate(['tgz']);
+    tick(50);
+    expect(location.path()).toBe('/not-found');
+  }));
+
+  it('navigate to "?req=admin" redirects you to not-found', fakeAsync(() => {
+    router.navigate(['?req=admin']);
+    tick(50);
+    expect(location.path()).toBe('/not-found');
+  }));
 });
 

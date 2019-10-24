@@ -10,7 +10,7 @@ import {NotFoundComponent} from "./components/not-found/not-found.component";
 import {AppComponent} from "./app.component";
 
 
-const routes: Routes = [
+export const routes: Routes = [
   {
     path: '',
     component: AppComponent,
@@ -29,6 +29,10 @@ const routes: Routes = [
   },
   {
     path: '**',
+    redirectTo: 'not-found'
+  },
+  {
+    path: 'not-found',
     component: NotFoundComponent
   }
 
