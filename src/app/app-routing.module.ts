@@ -1,5 +1,5 @@
-import { NgModule } from '@angular/core';
-import { Routes, RouterModule } from '@angular/router';
+import {NgModule} from '@angular/core';
+import {Routes, RouterModule} from '@angular/router';
 
 // Template Component
 import {LayoutTemplateComponent} from "./template/layout-template/layout-template.component";
@@ -7,27 +7,36 @@ import {LayoutTemplateComponent} from "./template/layout-template/layout-templat
 // Route Component
 import {HomeComponent} from "./components/home/home.component";
 import {NotFoundComponent} from "./components/not-found/not-found.component";
+import {AppComponent} from "./app.component";
 
 
 const routes: Routes = [
   {
     path: '',
-    component: LayoutTemplateComponent,
+    component: AppComponent,
     children: [
       {
         path: '',
-        component: HomeComponent
+        component: LayoutTemplateComponent,
+        children: [
+          {
+            path: '',
+            component: HomeComponent
+          }
+        ]
       },
-      {
-        path: '**',
-        component: NotFoundComponent
-      }
     ]
+  },
+  {
+    path: '**',
+    component: NotFoundComponent
   }
+
 ];
 
 @NgModule({
   imports: [RouterModule.forRoot(routes)],
   exports: [RouterModule]
 })
-export class AppRoutingModule { }
+export class AppRoutingModule {
+}
