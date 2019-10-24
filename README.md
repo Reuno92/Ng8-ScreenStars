@@ -1,5 +1,26 @@
 # MovieStar
 
+## Project introduction
+The project is based on TheMovieDatabase API.
+
+## Structure
+
+ Navigation
+  - Movies
+  - TV Shows
+  - TV Seasons
+  - TV episodes
+  - Persons
+  
+  - Languages EN and EN
+
+ Homepage with lastest news section
+  - Movie
+  - Tv Show
+  - Tv Season
+  - Tv episode
+  - Personalities
+
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 8.2.0.
 
 ## Development server
