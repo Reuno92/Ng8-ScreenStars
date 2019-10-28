@@ -16,16 +16,16 @@ export const IMAGES_HOST = `https://image.tmdb.org/t/p/`;
 const COMPANIES = `${HOST}3/company/`;
 const CREDITS = `${HOST}3/credit/`;
 
-export const MOVIE = `${HOST}3/movie/`;
-const TV_SHOW = `${HOST}3/tv/`;
-const PERSON = `${HOST}3/person/`;
+export const MOVIE = `${HOST}3/movie`;
+const TV_SHOW = `${HOST}3/tv`;
+const PERSON = `${HOST}3/person`;
 
 //Ref List id not required
 const CERTIFICATION = {
   movie: `${HOST}3/certification/movie/list`,
   tv: `${HOST}3/certification/tv/list`
 };
-const MOVIES_LIST = `${HOST}3/genre/movie/list`; // list genre of movie
+export const MOVIES_LIST = `${HOST}3/genre/movie/list`; // list genre of movie
 const TV_LIST = `${HOST}3/genre/tv/list`; // list genre of tv
 
 /*

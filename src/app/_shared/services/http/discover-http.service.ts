@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import {HttpClient, HttpHeaders} from "@angular/common/http";
 import {Observable} from "rxjs";
 
-import { DISCOVER_MOVIE, HOST, KEY} from "../../../constant/api.constant";
+import { DISCOVER_MOVIE, KEY} from "../../../constant/api.constant";
 
 @Injectable({
   providedIn: 'root'
@@ -15,7 +15,6 @@ export class DiscoverHttpService {
   constructor(private http: HttpClient) { }
 
   public getDiscover(): Observable<any> {
-    console.log(this.path_movie);
     return this.http.get(this.path_movie, {headers: new HttpHeaders(), responseType: "json"});
   }
 }

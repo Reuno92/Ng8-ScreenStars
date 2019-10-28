@@ -1,1 +1,30 @@
 <app-carousel [datas$]="this.discover$"></app-carousel>
+
+<section class="container mt-3" *ngIf="this.popularMovies$">
+  <h1>Popular Movies</h1>
+  <div class="card-columns">
+    <div class="card bg-secondary" *ngFor="let item of this.popularMovies$.results">
+      <img class="card-img-top" [src]="imageLinks + 'w342' + item.poster_path" alt="Card image cap">
+      <div class="card-header">
+        <h2 class="h3">{{ item.title }}</h2>
+        <i>{{ item.original_title }}</i>
+      </div>
+      <div class="card-body">
+        <div *ngFor="let genre of item.genre_ids" class="d-flex justify-content-between">
+          <span class="badge badge-pills badge-dark">
+            {{ genre }}
+          </span>
+        </div>
+
+        {{ item.overview | slice:0:80 }}...
+
+        <h3>Votes:</h3>
+        Count: {{ item.vote_count }} | Average: {{ item.vote_average }}
+
+      </div>
+      <div class="card-footer">
+        Popularity: {{ item.popularity }}
+      </div>
+    </div>
+  </div>
+</section>
