@@ -5,6 +5,13 @@ const PORT: string = '';
 const KEY: string = '?api_key=decbc3e9be01bed1040f7926218e7fd1';
 const TOKEN_v4: string = 'eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiJkZWNiYzNlOWJlMDFiZWQxMDQwZjc5MjYyMThlN2ZkMSIsInN1YiI6IjVjYWYxNzBmOTI1MTQxMmZhZDIxYzA0NyIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.vAE38LnH6C60MEcYDL1rUMgmBAWR2pVugNFIkoFhdK8';
 
+/*
+  images (need size and filename + extension):
+  size: see configuration for each type of images
+  https://image.tmdb.org/t/p/original//tpFpsqbleCzEE2p5EgvUq6ozfCA.png
+*/
+const IMAGES_HOST = `https://image.tmdb.org/t/p/`;
+
 // request id required at end of this endpoint
 const COMPANIES = `${HOST}3/company/`;
 const CREDITS = `${HOST}3/credit/`;
@@ -89,6 +96,10 @@ const SEARCH_SUFFIX = { // Need serialize attribute string query
   tv: 'tv'
 };
 
+/*
+*  TV SHOWS
+*/
+
 const TVSHOW_SUFFIX = {
   account_states : '/account_states',
   titles: '/alternative_titles',
@@ -143,13 +154,6 @@ const EPISODE_GROUP = '/episode_group'; // require an id
  https://api.themoviedb.org/3/find/tt1392190?api_key=decbc3e9be01bed1040f7926218e7fd1&language=fr-FR&external_source=IMDb_ID
 */
 const FIND = `${HOST}3/find/`;
-
-/*
-  images (need size and filename + extension):
-  size: see configuration for each type of images
-  https://image.tmdb.org/t/p/original//tpFpsqbleCzEE2p5EgvUq6ozfCA.png
-*/
-const IMAGES = `https://image.tmdb.org/t/p/`;
 
 // Configuration
 const CONFIG = `${HOST}3/configuration/`;
