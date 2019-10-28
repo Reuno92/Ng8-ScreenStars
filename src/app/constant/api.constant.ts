@@ -1,6 +1,8 @@
+import {ListRef} from "../models/refList";
+
 const HOST: string = 'https://api.themoviedb.org/';
 const PORT: string = '';
-const KEY_V3: string = '?api_key=decbc3e9be01bed1040f7926218e7fd1';
+const KEY: string = '?api_key=decbc3e9be01bed1040f7926218e7fd1';
 const TOKEN_v4: string = 'eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiJkZWNiYzNlOWJlMDFiZWQxMDQwZjc5MjYyMThlN2ZkMSIsInN1YiI6IjVjYWYxNzBmOTI1MTQxMmZhZDIxYzA0NyIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.vAE38LnH6C60MEcYDL1rUMgmBAWR2pVugNFIkoFhdK8';
 
 // request id required at end of this endpoint
@@ -47,13 +49,13 @@ const MOVIES_SUFFIX = {
 };
 
 const TRENDING = `${HOST}3/trending/`; // trending media and trending time
-const TRENDING_MEDIA = [
+const TRENDING_MEDIA: Array<ListRef> = [
   {id: 1, name: 'all'},
   {id: 2, name: 'movie'},
   {id: 3, name: 'tv'},
   {id: 4, name: 'person'}
 ];
-const TRENDING_TIME_WINDOWS = [
+const TRENDING_TIME_WINDOWS: Array<ListRef> = [
   {id: 1, name: 'day'},
   {id: 3, name: 'week'}
 ];
