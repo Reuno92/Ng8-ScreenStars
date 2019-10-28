@@ -1,7 +1,7 @@
 import {Component, Input, OnInit} from '@angular/core';
-import {NgbCarouselConfig} from "@ng-bootstrap/ng-bootstrap";
-import {Observable} from "rxjs";
-import { IMAGES_HOST } from "../../../constant/api.constant";
+import {NgbCarouselConfig} from '@ng-bootstrap/ng-bootstrap';
+import {Observable} from 'rxjs';
+import { IMAGES_HOST } from '../../../constant/api.constant';
 
 @Component({
   selector: 'app-carousel',

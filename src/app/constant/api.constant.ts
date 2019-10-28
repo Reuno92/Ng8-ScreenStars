@@ -25,8 +25,9 @@ const CERTIFICATION = {
   movie: `${HOST}3/certification/movie/list`,
   tv: `${HOST}3/certification/tv/list`
 };
+
 export const MOVIES_LIST = `${HOST}3/genre/movie/list`; // list genre of movie
-const TV_LIST = `${HOST}3/genre/tv/list`; // list genre of tv
+export const TV_LIST = `${HOST}3/genre/tv/list`; // list genre of tv
 
 /*
  * MOVIES

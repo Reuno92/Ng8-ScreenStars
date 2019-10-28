@@ -15,6 +15,19 @@ input.form-control {
   }
 }
 
+.carousel-indicators {
+  background-color: #343a40;
+  margin-left: 40%;
+  margin-right: 40%;
+}
+
+.carousel-caption {
+  background-color: #343a40;
+  bottom: 15px;
+  margin: auto 20%;
+  padding: 10px 10px 20px 10px;
+}
+
 .full-width {
   width: 100vw;
   object-fit: cover;
@@ -34,13 +47,13 @@ input.form-control {
   }
 
   @include media-breakpoint-only(md) {
-    column-count: 2;
+    column-count: 3;
   }
 
   @include media-breakpoint-only(lg) {
-    column-count: 3;
+    column-count: 4;
   }
   @include media-breakpoint-only(xl) {
-    column-count: 4;
+    column-count: 5;
   }
 }

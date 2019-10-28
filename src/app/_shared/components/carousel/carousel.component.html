@@ -1,5 +1,5 @@
 <ngb-carousel *ngIf="datas$">
-  <ng-template ngbSlide *ngFor="let item of datas$.results">
+  <ng-template ngbSlide *ngFor="let item of datas$.results | slice:0:6">
     <div>
       <img [src]="imagesLink + 'w1280' + item?.backdrop_path" class="full-width vh-85" alt="Random first slide">
     </div>

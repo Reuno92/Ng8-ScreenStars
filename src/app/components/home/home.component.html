@@ -10,15 +10,13 @@
         <i>{{ item.original_title }}</i>
       </div>
       <div class="card-body">
-        <div *ngFor="let genre of item.genre_ids" class="d-flex justify-content-between">
-          <span class="badge badge-pills badge-dark">
+        <div class="d-flex flex-wrap justify-content-between py-2">
+          <span class="badge badge-pills badge-dark" *ngFor="let genre of item.genre_ids">
             {{ genre }}
           </span>
         </div>
 
-        {{ item.overview | slice:0:80 }}...
-
-        <h3>Votes:</h3>
+        <h3 class="h4">Votes:</h3>
         Count: {{ item.vote_count }} | Average: {{ item.vote_average }}
 
       </div>

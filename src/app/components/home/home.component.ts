@@ -1,9 +1,10 @@
 import {AfterViewChecked, Component, OnDestroy, OnInit} from '@angular/core';
-import {Observable} from "rxjs";
-import {DiscoverHttpService} from "../../_shared/services/http/discover-http.service";
-import {HttpErrorResponse} from "@angular/common/http";
-import {MoviesHttpService} from "../../_shared/services/http/movies-http.service";
-import { IMAGES_HOST } from "../../constant/api.constant";
+import {Observable} from 'rxjs';
+import {DiscoverHttpService} from '../../_shared/services/http/discover-http.service';
+import {MoviesHttpService} from '../../_shared/services/http/movies-http.service';
+import {GenreHttpService} from '../../_shared/services/http/genre-http.service';
+import {HttpErrorResponse} from '@angular/common/http';
+import { IMAGES_HOST } from '../../constant/api.constant';
 
 @Component({
   selector: 'app-home',
@@ -20,6 +21,8 @@ export class HomeComponent implements OnInit, OnDestroy, AfterViewChecked {
   public popularMovies$: Observable<any>;
   public loadingPopularMovies: boolean;
 
+  public genreMovieList$: Observable<any>;
+
   // TV SHOWS
   public AiringToday$: Observable<any>;
   public OnAir$: Observable<any>;
@@ -31,7 +34,8 @@ export class HomeComponent implements OnInit, OnDestroy, AfterViewChecked {
   public error;
 
   constructor(private discoverService: DiscoverHttpService,
-              private movieService: MoviesHttpService) {
+              private movieService: MoviesHttpService,
+              private genreMovieService: GenreHttpService) {
     this.loadingDiscover = false;
     this.loadingLatestMovie = false;
     this.loadingPopularMovies = false;
@@ -54,7 +58,7 @@ export class HomeComponent implements OnInit, OnDestroy, AfterViewChecked {
       .subscribe(
         (data) => this.discover$ = data,
             (err: HttpErrorResponse) => this.error = err,
-        () => this.loadingDiscover = true)
+        () => this.loadingDiscover = true);
   }
 
   private getLatestMovies(): void {
@@ -63,7 +67,13 @@ export class HomeComponent implements OnInit, OnDestroy, AfterViewChecked {
         (data) => this.latestMovies$ = data,
         (err: HttpErrorResponse) => this.error = err,
         () => this.loadingLatestMovie = true
-      )
+      );
+
+    this.genreMovieService.getGenreMoviesList()
+      .subscribe(
+        (data) => this.genreMovieList$ = data,
+        (err: HttpErrorResponse) => this.error = err
+      );
   }
 
   private getPopularMovies(): void {
