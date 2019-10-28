@@ -16,6 +16,8 @@ import { LayoutHeaderComponent } from './template/layout-template/layout-header/
 import { LayoutFooterComponent } from './template/layout-template/layout-footer/layout-footer.component';
 import { HomeComponent } from './components/home/home.component';
 import { NotFoundComponent } from './components/not-found/not-found.component';
+import { CarouselComponent } from './_shared/components/carousel/carrousel.component';
+import {HttpClientModule} from "@angular/common/http";
 
 const LAYOUT_COMPONENTS = [
   LayoutTemplateComponent,
@@ -32,11 +34,13 @@ const APP_COMPONENTS = [
   declarations: [
     AppComponent,
     ...LAYOUT_COMPONENTS,
-    ...APP_COMPONENTS
+    ...APP_COMPONENTS,
+    CarouselComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
+    HttpClientModule,
     ...THIRD_PARTY_MODULES
   ],
   providers: [],

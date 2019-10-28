@@ -1,0 +1,12 @@
+<ngb-carousel *ngIf="datas$">
+  <ng-template ngbSlide *ngFor="let item of datas$.results">
+    <div>
+      <img [src]="imagesLink + 'w1280' + item?.backdrop_path" class="full-width vh-85" alt="Random first slide">
+    </div>
+
+    <div class="carousel-caption">
+      <h3>{{ item?.title }}</h3>
+      <p>{{ item?.overview | slice:0:79 }}…</p>
+    </div>
+  </ng-template>
+</ngb-carousel>
