@@ -1,1 +1,14 @@
 /* You can add global styles to this file, and also import other style files */
+body {
+  background-color: #343a40;
+  color: white;
+}
+
+input.form-control {
+  background-color: #343a40;
+  color: white;
+  &:focus {
+    background-color: #6c757d;
+    color: #343a40;
+  }
+}
