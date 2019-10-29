@@ -2,12 +2,12 @@ import {NgModule} from '@angular/core';
 import {Routes, RouterModule} from '@angular/router';
 
 // Template Component
-import {LayoutTemplateComponent} from "./template/layout-template/layout-template.component";
+import {LayoutTemplateComponent} from './template/layout-template/layout-template.component';
 
 // Route Component
-import {HomeComponent} from "./components/home/home.component";
-import {NotFoundComponent} from "./components/not-found/not-found.component";
-import {AppComponent} from "./app.component";
+import {HomeComponent} from './components/home/home.component';
+import {NotFoundComponent} from './components/not-found/not-found.component';
+import {AppComponent} from './app.component';
 
 
 export const routes: Routes = [
@@ -25,6 +25,30 @@ export const routes: Routes = [
             data : {
               title: 'Home'
             }
+          },
+          {
+            path: 'trending',
+            component: TrendingComponent
+          },
+          {
+            path: 'movies',
+            component: MoviesComponent,
+            children: [
+              {
+                path: ':id/view',
+                component: MovieComponent
+              }
+            ]
+          },
+          {
+            path: 'tv-show',
+            component: TVShowsComponent,
+            children: [
+              {
+                path: ':id/view',
+                component: TVShowComponent
+              }
+            ]
           }
         ]
       },
