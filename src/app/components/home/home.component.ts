@@ -14,8 +14,8 @@ import { IMAGES_HOST } from '../../constant/api.constant';
 export class HomeComponent implements OnInit, OnDestroy, AfterViewChecked {
 
   // MOVIES
-  public discover$: Observable<any>;
-  public loadingDiscover: boolean;
+  public discoverMovie$: Observable<any>;
+  public loadingDiscoverMovie: boolean;
 
   public latestMovies$: Observable<any>;
   public loadingLatestMovie: boolean;
@@ -26,6 +26,9 @@ export class HomeComponent implements OnInit, OnDestroy, AfterViewChecked {
   public genreMovieList$: Observable<any>;
 
   // TV SHOWS
+  public discoverTV$: Observable<any>;
+  public loadingDiscoverTV: boolean;
+
   public AiringToday$: Observable<any>;
   public OnAir$: Observable<any>;
   public topRated$: Observable<any>;
@@ -39,14 +42,16 @@ export class HomeComponent implements OnInit, OnDestroy, AfterViewChecked {
     private discoverService: DiscoverHttpService,
     private movieService: MoviesHttpService,
     private genreMovieService: GenreHttpService) {
-      this.loadingDiscover = false;
+      this.loadingDiscoverMovie = false;
       this.loadingLatestMovie = false;
       this.loadingPopularMovies = false;
       this.imageLinks = IMAGES_HOST;
   }
 
   public ngOnInit(): void {
-    this.getDiscover();
+    this.getDiscoverMovie();
+    this.getDiscoverTV();
+
     this.getMoviesGenre();
     this.getPopularMovies();
   }
@@ -55,12 +60,20 @@ export class HomeComponent implements OnInit, OnDestroy, AfterViewChecked {
 
   public ngOnDestroy(): void {}
 
-  private getDiscover(): void {
-    this.discoverService.getDiscover()
+  private getDiscoverMovie(): void {
+    this.discoverService.getDiscoverMovie()
       .subscribe(
-        (data) => this.discover$ = data,
+        (data) => this.discoverMovie$ = data,
             (err: HttpErrorResponse) => this.error = err,
-        () => this.loadingDiscover = true);
+        () => this.loadingDiscoverMovie = true);
+  }
+
+  private getDiscoverTV(): void {
+    this.discoverService.getDiscoverTV()
+      .subscribe(
+        (data) => this.discoverTV$ = data,
+        (err: HttpErrorResponse) => this.error = err,
+        () => this.loadingDiscoverTV = true);
   }
 
   private getLatestMovies(): void {

@@ -1,5 +1,5 @@
 <section id="home">
-<app-carousel [datas$]="this.discover$"></app-carousel>
+<app-carousel [datas$]="this.discoverMovie$"></app-carousel>
 
 <section class="container mt-3" *ngIf="this.popularMovies$">
   <h1>Popular Movies</h1>
@@ -28,5 +28,5 @@
   </div>
 </section>
 
-<app-carousel [datas$]="this.discover$"></app-carousel>
+<app-carousel [datas$]="this.discoverTV$"></app-carousel>
 </section>

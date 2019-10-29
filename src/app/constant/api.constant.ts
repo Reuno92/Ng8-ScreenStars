@@ -1,9 +1,9 @@
-import {ListRef} from "../models/refList";
+import {ListRef} from '../models/refList';
 
-export const HOST: string = 'https://api.themoviedb.org/';
-const PORT: string = '';
-export const KEY: string = '?api_key=decbc3e9be01bed1040f7926218e7fd1';
-const TOKEN_v4: string = 'eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiJkZWNiYzNlOWJlMDFiZWQxMDQwZjc5MjYyMThlN2ZkMSIsInN1YiI6IjVjYWYxNzBmOTI1MTQxMmZhZDIxYzA0NyIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.vAE38LnH6C60MEcYDL1rUMgmBAWR2pVugNFIkoFhdK8';
+export const HOST = 'https://api.themoviedb.org/';
+const PORT = '';
+export const KEY = '?api_key=decbc3e9be01bed1040f7926218e7fd1';
+const TOKEN_V4 = 'eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiJkZWNiYzNlOWJlMDFiZWQxMDQwZjc5MjYyMThlN2ZkMSIsInN1YiI6IjVjYWYxNzBmOTI1MTQxMmZhZDIxYzA0NyIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.vAE38LnH6C60MEcYDL1rUMgmBAWR2pVugNFIkoFhdK8';
 
 /*
   images (need size and filename + extension):
@@ -17,10 +17,10 @@ const COMPANIES = `${HOST}3/company/`;
 const CREDITS = `${HOST}3/credit/`;
 
 export const MOVIE = `${HOST}3/movie`;
-const TV_SHOW = `${HOST}3/tv`;
+export const TV_SHOW = `${HOST}3/tv`;
 const PERSON = `${HOST}3/person`;
 
-//Ref List id not required
+// Ref List id not required
 const CERTIFICATION = {
   movie: `${HOST}3/certification/movie/list`,
   tv: `${HOST}3/certification/tv/list`
@@ -99,7 +99,9 @@ const SEARCH_SUFFIX = { // Need serialize attribute string query
 *  TV SHOWS
 */
 
-const TVSHOW_SUFFIX = {
+export const DISCOVER_TV = `${HOST}3/discover/tv`;
+
+export const TVSHOW_SUFFIX = {
   account_states : '/account_states',
   titles: '/alternative_titles',
   changes: '/changes', // return last 24hours or use query 'start_date' and 'end_date'
@@ -118,7 +120,7 @@ const TVSHOW_SUFFIX = {
   lists: '/lists',
 };
 
-const TVSHOWS_SUFFIX = {
+export const TVSHOWS_SUFFIX = {
   latest: '/latest',
   airingToday: '/airing_today',
   onTheAir: '/on_the_air',
