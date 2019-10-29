@@ -1,31 +1,38 @@
 import { Injectable } from '@angular/core';
-import {HttpClient, HttpHeaders} from "@angular/common/http";
+import {HttpClient, HttpHeaders} from '@angular/common/http';
 
-import {MOVIE, MOVIE_SUFFIX, MOVIES_SUFFIX, HOST, KEY} from "../../../constant/api.constant";
-import {Observable} from "rxjs";
+import {MOVIE, MOVIES_SUFFIX, KEY} from '../../../constant/api.constant';
+import {Observable} from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
 })
 export class MoviesHttpService {
 
-  private path_movie = MOVIE + KEY;
-  private path_latest = MOVIE + MOVIES_SUFFIX.latest + KEY;
-  private path_popular = MOVIE + MOVIES_SUFFIX.popular + KEY;
+  private pathMovie = MOVIE + KEY;
+  private pathLatest = MOVIE + MOVIES_SUFFIX.latest + KEY;
+  private pathPopular = MOVIE + MOVIES_SUFFIX.popular + KEY;
 
   constructor(private http: HttpClient) { }
 
   public getLatestMovies(): Observable<any> {
-    return this.http.get(this.path_latest, {
+    return this.http.get(this.pathLatest, {
       headers: new HttpHeaders(),
-      responseType: "json"
+      responseType: 'json'
     });
   }
 
   public getPopularMovies(): Observable<any> {
-    return this.http.get(this.path_popular, {
+    return this.http.get(this.pathPopular, {
       headers: new HttpHeaders(),
-      responseType: "json"
+      responseType: 'json'
+    });
+  }
+
+  public getMovies(id): Observable<any> {
+    return this.http.get(this.pathMovie + id, {
+      headers: new HttpHeaders(),
+      responseType: 'json'
     });
   }
 }

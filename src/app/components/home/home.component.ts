@@ -16,8 +16,10 @@ export class HomeComponent implements OnInit, OnDestroy, AfterViewChecked {
   // MOVIES
   public discover$: Observable<any>;
   public loadingDiscover: boolean;
+
   public latestMovies$: Observable<any>;
   public loadingLatestMovie: boolean;
+
   public popularMovies$: Observable<any>;
   public loadingPopularMovies: boolean;
 
@@ -33,23 +35,23 @@ export class HomeComponent implements OnInit, OnDestroy, AfterViewChecked {
   public imageLinks: string;
   public error;
 
-  constructor(private discoverService: DiscoverHttpService,
-              private movieService: MoviesHttpService,
-              private genreMovieService: GenreHttpService) {
-    this.loadingDiscover = false;
-    this.loadingLatestMovie = false;
-    this.loadingPopularMovies = false;
-    this.imageLinks = IMAGES_HOST;
+  constructor(
+    private discoverService: DiscoverHttpService,
+    private movieService: MoviesHttpService,
+    private genreMovieService: GenreHttpService) {
+      this.loadingDiscover = false;
+      this.loadingLatestMovie = false;
+      this.loadingPopularMovies = false;
+      this.imageLinks = IMAGES_HOST;
   }
 
   public ngOnInit(): void {
     this.getDiscover();
-    this.getLatestMovies();
+    this.getMoviesGenre();
     this.getPopularMovies();
   }
 
-  public ngAfterViewChecked(): void {
-  }
+  public ngAfterViewChecked(): void {}
 
   public ngOnDestroy(): void {}
 
@@ -68,7 +70,9 @@ export class HomeComponent implements OnInit, OnDestroy, AfterViewChecked {
         (err: HttpErrorResponse) => this.error = err,
         () => this.loadingLatestMovie = true
       );
+  }
 
+  private getMoviesGenre(): void {
     this.genreMovieService.getGenreMoviesList()
       .subscribe(
         (data) => this.genreMovieList$ = data,
@@ -84,8 +88,6 @@ export class HomeComponent implements OnInit, OnDestroy, AfterViewChecked {
         () => this.loadingPopularMovies = true
       );
   }
-
-  private getLatestTV() {}
 
   private getPopularTV() {}
 }

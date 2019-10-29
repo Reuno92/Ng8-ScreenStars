@@ -1,3 +1,4 @@
+<section id="home">
 <app-carousel [datas$]="this.discover$"></app-carousel>
 
 <section class="container mt-3" *ngIf="this.popularMovies$">
@@ -12,7 +13,7 @@
       <div class="card-body">
         <div class="d-flex flex-wrap justify-content-between py-2">
           <span class="badge badge-pills badge-dark" *ngFor="let genre of item.genre_ids">
-            {{ genre }}
+            genre:{{ genre }}
           </span>
         </div>
 
@@ -25,4 +26,7 @@
       </div>
     </div>
   </div>
+</section>
+
+<app-carousel [datas$]="this.discover$"></app-carousel>
 </section>

@@ -3,9 +3,10 @@ import { NgModule } from '@angular/core';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
+import {HttpClientModule} from '@angular/common/http';
 
 // Third party modules
-import {NgbModule} from "@ng-bootstrap/ng-bootstrap";
+import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
 const THIRD_PARTY_MODULES = [
   NgbModule,
 ];
@@ -17,7 +18,6 @@ import { LayoutFooterComponent } from './template/layout-template/layout-footer/
 import { HomeComponent } from './components/home/home.component';
 import { NotFoundComponent } from './components/not-found/not-found.component';
 import { CarouselComponent } from './_shared/components/carousel/carrousel.component';
-import {HttpClientModule} from "@angular/common/http";
 
 const LAYOUT_COMPONENTS = [
   LayoutTemplateComponent,

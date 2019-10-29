@@ -24,7 +24,7 @@ input.form-control {
 .carousel-caption {
   background-color: #343a40;
   bottom: 15px;
-  margin: auto 20%;
+  margin: auto 15%;
   padding: 10px 10px 20px 10px;
 }
 
@@ -43,7 +43,7 @@ input.form-control {
   }
 
   @include media-breakpoint-only(sm) {
-    column-count: 1;
+    column-count: 2;
   }
 
   @include media-breakpoint-only(md) {
