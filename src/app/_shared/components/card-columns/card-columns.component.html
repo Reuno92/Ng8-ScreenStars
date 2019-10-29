@@ -1,1 +1,26 @@
-<p>card-columns works!</p>
+<section class="container mt-3" *ngIf="this.data$">
+  <h1>Popular Movies</h1>
+  <div class="card-columns">
+    <div class="card bg-secondary" *ngFor="let item of this.data$.results">
+      <img class="card-img-top" [src]="imageLinks + 'w342' + item.poster_path" alt="Card image cap">
+      <div class="card-header">
+        <h2 class="h3">{{ item.title }}</h2>
+        <i>{{ item.original_title }}</i>
+      </div>
+      <div class="card-body">
+        <div class="d-flex flex-wrap justify-content-between py-2">
+          <span class="badge badge-pills badge-dark" *ngFor="let genre of item.genre_ids">
+            genre:{{ genre }}
+          </span>
+        </div>
+
+        <h3 class="h4">Votes:</h3>
+        Count: {{ item.vote_count }} | Average: {{ item.vote_average }}
+
+      </div>
+      <div class="card-footer">
+        Popularity: {{ item.popularity }}
+      </div>
+    </div>
+  </div>
+</section>

@@ -35,7 +35,6 @@ export class HomeComponent implements OnInit, OnDestroy, AfterViewChecked {
   public latestTV$: Observable<any>;
   public popularTV$: Observable<any>;
 
-  public imageLinks: string;
   public error;
 
   constructor(
@@ -45,7 +44,6 @@ export class HomeComponent implements OnInit, OnDestroy, AfterViewChecked {
       this.loadingDiscoverMovie = false;
       this.loadingLatestMovie = false;
       this.loadingPopularMovies = false;
-      this.imageLinks = IMAGES_HOST;
   }
 
   public ngOnInit(): void {

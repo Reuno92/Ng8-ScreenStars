@@ -1,4 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, Input, OnInit} from '@angular/core';
+import {Observable} from 'rxjs';
+import {IMAGES_HOST} from '../../../constant/api.constant';
 
 @Component({
   selector: 'app-card-columns',
@@ -7,7 +9,13 @@ import { Component, OnInit } from '@angular/core';
 })
 export class CardColumnsComponent implements OnInit {
 
-  constructor() { }
+  @Input() private data$: Observable<any>;
+
+  public imageLinks: string;
+
+  constructor() {
+    this.imageLinks = IMAGES_HOST;
+  }
 
   ngOnInit() {
   }
