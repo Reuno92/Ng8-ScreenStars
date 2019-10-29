@@ -36,6 +36,16 @@ export const TV_LIST = `${HOST}3/genre/tv/list`; // list genre of tv
 export const DISCOVER_MOVIE = `${HOST}3/discover/movie`;
 
 // MOVIE suffix after movie_id
+
+export const MOVIE_RELEASE_TYPE: Array<ListRef> = [
+  {id: 1, name: 'Premiere'},
+  {id: 2, name: 'Theatrical (limited)'},
+  {id: 3, name: 'Theatrical'},
+  {id: 4, name: 'Digital'},
+  {id: 5, name: 'Physical'},
+  {id: 6, name: 'TV'},
+];
+
 export const MOVIE_SUFFIX = {
   account_states : '/account_states',
   titles: '/alternative_titles',
@@ -65,7 +75,6 @@ export const MOVIES_SUFFIX = {
 /*
     PERSON
  */
-
 export const PERSON_SUFFIX = {
   changes: '/changes',
   movie_credits: '/movie_credits',
