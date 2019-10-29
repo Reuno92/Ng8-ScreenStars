@@ -4,6 +4,8 @@ import {Observable} from 'rxjs';
 import {TvShowHttpService} from '../../../_shared/services/http/tv-show-http.service';
 import {HttpErrorResponse} from '@angular/common/http';
 import {IMAGES_HOST} from '../../../constant/api.constant';
+import {TvShowTabsetService} from '../../../_shared/services/tabset/tv-show-tabset.service';
+import {Tabset} from '../../../_shared/models/tabset';
 
 @Component({
   selector: 'app-single-tv-show',
@@ -18,14 +20,13 @@ export class SingleTVShowComponent implements OnInit {
   public error: HttpErrorResponse;
   public imagesLinks: string;
 
-  public titles: Array<string>;
-  public content: any;
+  public tabsOptions: Array<Tabset>;
 
   public constructor(private route: ActivatedRoute,
-                     private tvService: TvShowHttpService) {
+                     private tvService: TvShowHttpService,
+                     private tvShowTabsetService: TvShowTabsetService) {
     this.imagesLinks = IMAGES_HOST;
-    this.titles = ['Detail', 'Casting', 'Review', 'Recommendation', 'Similar', 'Territorial', 'Videos', 'Visuals'];
-    this.content = [];
+    this.tabsOptions = this.tvShowTabsetService.tabsOptions;
   }
 
   public ngOnInit() {

@@ -39,6 +39,15 @@ import { TVShowsComponent } from './components/tv-shows/tv-shows.component';
 import { SingleTVShowComponent } from './components/tv-shows/single-tv-show/single-tv-show.component';
 import { SinglePersonComponent } from './components/person/single-person/single-person.component';
 import { TabsetComponent } from './_shared/components/tabset/tabset.component';
+import { TvShowDetailComponent } from './_shared/components/tabset/components/tv-show/tv-show-detail/tv-show-detail.component';
+import { TvShowCastingComponent } from './_shared/components/tabset/components/tv-show/tv-show-casting/tv-show-casting.component';
+import { TvShowReviewComponent } from './_shared/components/tabset/components/tv-show/tv-show-review/tv-show-review.component';
+import { TvShowRecommendationComponent } from './_shared/components/tabset/components/tv-show/tv-show-recommendation/tv-show-recommendation.component';
+import { TvShowSimilarComponent } from './_shared/components/tabset/components/tv-show/tv-show-similar/tv-show-similar.component';
+import { TvShowTerritorialComponent } from './_shared/components/tabset/components/tv-show/tv-show-territorial/tv-show-territorial.component';
+import { TvShowVideosComponent } from './_shared/components/tabset/components/tv-show/tv-show-videos/tv-show-videos.component';
+import { TvShowVisualsComponent } from './_shared/components/tabset/components/tv-show/tv-show-visuals/tv-show-visuals.component';
+import {TvShowTabsetService} from './_shared/services/tabset/tv-show-tabset.service';
 const APP_COMPONENTS = [
   HomeComponent,
   NotFoundComponent,
@@ -56,7 +65,15 @@ const APP_COMPONENTS = [
     ...APP_COMPONENTS,
     ...APP_SHARED_COMPONENTS,
     SinglePersonComponent,
-    TabsetComponent
+    TabsetComponent,
+    TvShowDetailComponent,
+    TvShowCastingComponent,
+    TvShowReviewComponent,
+    TvShowRecommendationComponent,
+    TvShowSimilarComponent,
+    TvShowTerritorialComponent,
+    TvShowVideosComponent,
+    TvShowVisualsComponent
   ],
   imports: [
     BrowserModule,
@@ -64,7 +81,7 @@ const APP_COMPONENTS = [
     HttpClientModule,
     ...THIRD_PARTY_MODULES
   ],
-  providers: [],
+  providers: [TvShowTabsetService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

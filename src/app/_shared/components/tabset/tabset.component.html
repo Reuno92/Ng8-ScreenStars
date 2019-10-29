@@ -1,11 +1,9 @@
-<ngb-tabset [justify]="this.justify">
-  <ng-container *ngFor="let title of titles">
-    <ngb-tab [title]="title">
-      <ng-container *ngFor="let item of content">
-        <ng-template ngbTabContent>
-          {{ item }}
-        </ng-template>
-      </ng-container>
-    </ngb-tab>
-  </ng-container>
+<ngb-tabset [justify]="this.justify"
+            (tabChange)="onTabChange($event)">
+  <ngb-tab *ngFor="let tab of tabs" [id]="tab.name" [title]="tab.name">
+    <ng-template ngbTabContent>
+      <router-outlet></router-outlet>
+    </ng-template>
+  </ngb-tab>
+
 </ngb-tabset>

@@ -14,6 +14,14 @@ import {MoviesComponent} from './components/movies/movies.component';
 import {SingleMovieComponent} from './components/movies/single-movie/single-movie.component';
 import {TrendingComponent} from './components/trending/trending.component';
 import {SinglePersonComponent} from './components/person/single-person/single-person.component';
+import {TvShowDetailComponent} from './_shared/components/tabset/components/tv-show/tv-show-detail/tv-show-detail.component';
+import {TvShowCastingComponent} from './_shared/components/tabset/components/tv-show/tv-show-casting/tv-show-casting.component';
+import {TvShowReviewComponent} from './_shared/components/tabset/components/tv-show/tv-show-review/tv-show-review.component';
+import {TvShowRecommendationComponent} from './_shared/components/tabset/components/tv-show/tv-show-recommendation/tv-show-recommendation.component';
+import {TvShowSimilarComponent} from './_shared/components/tabset/components/tv-show/tv-show-similar/tv-show-similar.component';
+import {TvShowTerritorialComponent} from './_shared/components/tabset/components/tv-show/tv-show-territorial/tv-show-territorial.component';
+import {TvShowVideosComponent} from './_shared/components/tabset/components/tv-show/tv-show-videos/tv-show-videos.component';
+import {TvShowVisualsComponent} from './_shared/components/tabset/components/tv-show/tv-show-visuals/tv-show-visuals.component';
 
 export const routes: Routes = [
   {
@@ -48,8 +56,46 @@ export const routes: Routes = [
             component: TVShowsComponent,
           },
           {
-            path: 'tv-show/:id/view',
-            component: SingleTVShowComponent
+            path: 'tv-show/:id',
+            component: SingleTVShowComponent,
+            children: [
+              {
+                path: '',
+                redirectTo: 'detail', pathMatch: 'full'
+              },
+              {
+                path: 'detail',
+                component: TvShowDetailComponent
+              },
+              {
+                path: 'casting',
+                component: TvShowCastingComponent
+              },
+              {
+                path: 'review',
+                component: TvShowReviewComponent,
+              },
+              {
+                path: 'recommendation',
+                component: TvShowRecommendationComponent
+              },
+              {
+                path: 'similar',
+                component: TvShowSimilarComponent
+              },
+              {
+                path: 'territorial',
+                component: TvShowTerritorialComponent
+              },
+              {
+                path: 'videos',
+                component: TvShowVideosComponent
+              },
+              {
+                path: 'visuals',
+                component: TvShowVisualsComponent
+              }
+            ]
           },
           {
             path: 'person/:id/view',
