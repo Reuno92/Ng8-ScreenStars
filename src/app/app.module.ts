@@ -37,6 +37,7 @@ import { MoviesComponent } from './components/movies/movies.component';
 import { SingleMovieComponent } from './components/movies/single-movie/single-movie.component';
 import { TVShowsComponent } from './components/tv-shows/tv-shows.component';
 import { SingleTVShowComponent } from './components/tv-shows/single-tv-show/single-tv-show.component';
+import { SinglePersonComponent } from './components/person/single-person/single-person.component';
 const APP_COMPONENTS = [
   HomeComponent,
   NotFoundComponent,
@@ -52,7 +53,8 @@ const APP_COMPONENTS = [
     AppComponent,
     ...LAYOUT_COMPONENTS,
     ...APP_COMPONENTS,
-    ...APP_SHARED_COMPONENTS
+    ...APP_SHARED_COMPONENTS,
+    SinglePersonComponent
   ],
   imports: [
     BrowserModule,

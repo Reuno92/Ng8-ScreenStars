@@ -13,7 +13,7 @@ import {TVShowsComponent} from './components/tv-shows/tv-shows.component';
 import {MoviesComponent} from './components/movies/movies.component';
 import {SingleMovieComponent} from './components/movies/single-movie/single-movie.component';
 import {TrendingComponent} from './components/trending/trending.component';
-
+import {SinglePersonComponent} from './components/person/single-person/single-person.component';
 
 export const routes: Routes = [
   {
@@ -54,6 +54,10 @@ export const routes: Routes = [
                 component: SingleTVShowComponent
               }
             ]
+          },
+          {
+            path: 'person/:id/view',
+            component: SinglePersonComponent
           }
         ]
       },
