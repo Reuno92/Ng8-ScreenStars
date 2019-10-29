@@ -18,7 +18,7 @@ const CREDITS = `${HOST}3/credit/`;
 
 export const MOVIE = `${HOST}3/movie`;
 export const TV_SHOW = `${HOST}3/tv`;
-const PERSON = `${HOST}3/person`;
+export const PERSON = `${HOST}3/person`;
 
 // Ref List id not required
 const CERTIFICATION = {
@@ -66,7 +66,7 @@ export const MOVIES_SUFFIX = {
     PERSON
  */
 
-const PERSON_SUFFIX = {
+export const PERSON_SUFFIX = {
   changes: '/changes',
   movie_credits: '/movie_credits',
   tv_credits: '/tv_credits',
@@ -77,7 +77,7 @@ const PERSON_SUFFIX = {
   translations: '/translations'
 };
 
-const PERSONS_SUFFIX = {
+export const PERSONS_SUFFIX = {
   latest: '/latest',
   popular: '/popular'
 };

@@ -20,7 +20,7 @@ export class CarouselComponent implements OnInit {
     this.config.keyboard = false;
     this.config.pauseOnHover = true;
 
-    this.imagesLink = IMAGES_HOST
+    this.imagesLink = IMAGES_HOST;
   }
 
   ngOnInit() {}
