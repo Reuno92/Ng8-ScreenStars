@@ -1,0 +1,15 @@
+.main {
+  position: relative;
+  margin-top : -325px;
+}
+
+.episode-card {
+  border-radius: 5px;
+  border: 1px solid #6c757d;
+  & .card-header, .card-footer {
+    background-color: rgba(52,58,64, .75);
+  }
+  & .card-footer p, .card-footer b {
+    margin:0;
+  }
+}

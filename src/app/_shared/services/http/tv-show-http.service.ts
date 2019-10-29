@@ -19,7 +19,11 @@ export class TvShowHttpService {
   }
 
   public getTVShow(id): Observable<any> {
-    return this.http.get(TV_SHOW + id + KEY, {headers: new HttpHeaders(), responseType: 'json'});
+    console.log(this.getPathTvShow(id));
+    return this.http.get(this.getPathTvShow(id), {headers: new HttpHeaders(), responseType: 'json'});
   }
 
+  private getPathTvShow(id): string {
+    return TV_SHOW + '/' + id + KEY;
+  }
 }

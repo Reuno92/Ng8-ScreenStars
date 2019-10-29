@@ -38,22 +38,18 @@ export const routes: Routes = [
           {
             path: 'movies',
             component: MoviesComponent,
-            children: [
-              {
-                path: ':id/view',
-                component: SingleMovieComponent
-              }
-            ]
+          },
+          {
+            path: 'movies/:id/view',
+            component: SingleMovieComponent
           },
           {
             path: 'tv-show',
             component: TVShowsComponent,
-            children: [
-              {
-                path: ':id/view',
-                component: SingleTVShowComponent
-              }
-            ]
+          },
+          {
+            path: 'tv-show/:id/view',
+            component: SingleTVShowComponent
           },
           {
             path: 'person/:id/view',
@@ -71,7 +67,6 @@ export const routes: Routes = [
     path: 'not-found',
     component: NotFoundComponent
   }
-
 ];
 
 @NgModule({

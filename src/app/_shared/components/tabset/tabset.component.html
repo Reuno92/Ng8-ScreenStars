@@ -1,0 +1,11 @@
+<ngb-tabset [justify]="this.justify">
+  <ng-container *ngFor="let title of titles">
+    <ngb-tab [title]="title">
+      <ng-container *ngFor="let item of content">
+        <ng-template ngbTabContent>
+          {{ item }}
+        </ng-template>
+      </ng-container>
+    </ngb-tab>
+  </ng-container>
+</ngb-tabset>

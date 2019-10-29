@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import {ActivatedRoute} from '@angular/router';
 
 @Component({
   selector: 'app-tv-shows',
@@ -7,9 +8,8 @@ import { Component, OnInit } from '@angular/core';
 })
 export class TVShowsComponent implements OnInit {
 
-  constructor() { }
+  public constructor() {}
 
-  ngOnInit() {
-  }
+  public ngOnInit() {}
 
 }
