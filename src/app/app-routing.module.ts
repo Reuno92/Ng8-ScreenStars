@@ -8,6 +8,11 @@ import {LayoutTemplateComponent} from './template/layout-template/layout-templat
 import {HomeComponent} from './components/home/home.component';
 import {NotFoundComponent} from './components/not-found/not-found.component';
 import {AppComponent} from './app.component';
+import {SingleTVShowComponent} from './components/tv-shows/single-tv-show/single-tv-show.component';
+import {TVShowsComponent} from './components/tv-shows/tv-shows.component';
+import {MoviesComponent} from './components/movies/movies.component';
+import {SingleMovieComponent} from './components/movies/single-movie/single-movie.component';
+import {TrendingComponent} from './components/trending/trending.component';
 
 
 export const routes: Routes = [
@@ -27,7 +32,7 @@ export const routes: Routes = [
             }
           },
           {
-            path: 'trending',
+            path: 'trendings',
             component: TrendingComponent
           },
           {
@@ -36,7 +41,7 @@ export const routes: Routes = [
             children: [
               {
                 path: ':id/view',
-                component: MovieComponent
+                component: SingleMovieComponent
               }
             ]
           },
@@ -46,7 +51,7 @@ export const routes: Routes = [
             children: [
               {
                 path: ':id/view',
-                component: TVShowComponent
+                component: SingleTVShowComponent
               }
             ]
           }

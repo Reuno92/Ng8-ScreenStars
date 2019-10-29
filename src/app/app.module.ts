@@ -15,21 +15,36 @@ const THIRD_PARTY_MODULES = [
 import { LayoutTemplateComponent } from './template/layout-template/layout-template.component';
 import { LayoutHeaderComponent } from './template/layout-template/layout-header/layout-header.component';
 import { LayoutFooterComponent } from './template/layout-template/layout-footer/layout-footer.component';
-import { HomeComponent } from './components/home/home.component';
-import { NotFoundComponent } from './components/not-found/not-found.component';
-import { CarouselComponent } from './_shared/components/carousel/carrousel.component';
-import { CardColumnsComponent } from './_shared/components/card-columns/card-columns.component';
-import { PopularPersonComponent } from './_shared/components/popular-person/popular-person.component';
-
 const LAYOUT_COMPONENTS = [
   LayoutTemplateComponent,
   LayoutHeaderComponent,
   LayoutFooterComponent,
 ];
 
+import { CarouselComponent } from './_shared/components/carousel/carrousel.component';
+import { CardColumnsComponent } from './_shared/components/card-columns/card-columns.component';
+import { PopularPersonComponent } from './_shared/components/popular-person/popular-person.component';
+const APP_SHARED_COMPONENTS = [
+  CarouselComponent,
+  CardColumnsComponent,
+  PopularPersonComponent,
+];
+
+import { HomeComponent } from './components/home/home.component';
+import { NotFoundComponent } from './components/not-found/not-found.component';
+import { TrendingComponent } from './components/trending/trending.component';
+import { MoviesComponent } from './components/movies/movies.component';
+import { SingleMovieComponent } from './components/movies/single-movie/single-movie.component';
+import { TVShowsComponent } from './components/tv-shows/tv-shows.component';
+import { SingleTVShowComponent } from './components/tv-shows/single-tv-show/single-tv-show.component';
 const APP_COMPONENTS = [
   HomeComponent,
-  NotFoundComponent
+  NotFoundComponent,
+  TrendingComponent,
+  MoviesComponent,
+  SingleMovieComponent,
+  TVShowsComponent,
+  SingleTVShowComponent
 ];
 
 @NgModule({
@@ -37,9 +52,7 @@ const APP_COMPONENTS = [
     AppComponent,
     ...LAYOUT_COMPONENTS,
     ...APP_COMPONENTS,
-    CarouselComponent,
-    CardColumnsComponent,
-    PopularPersonComponent
+    ...APP_SHARED_COMPONENTS
   ],
   imports: [
     BrowserModule,
