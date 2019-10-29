@@ -4,7 +4,6 @@ import {DiscoverHttpService} from '../../_shared/services/http/discover-http.ser
 import {MoviesHttpService} from '../../_shared/services/http/movies-http.service';
 import {GenreHttpService} from '../../_shared/services/http/genre-http.service';
 import {HttpErrorResponse} from '@angular/common/http';
-import { IMAGES_HOST } from '../../constant/api.constant';
 import {TvShowHttpService} from '../../_shared/services/http/tv-show-http.service';
 
 @Component({
