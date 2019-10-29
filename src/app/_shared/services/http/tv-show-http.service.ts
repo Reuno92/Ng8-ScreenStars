@@ -19,11 +19,26 @@ export class TvShowHttpService {
   }
 
   public getTVShow(id): Observable<any> {
-    console.log(this.getPathTvShow(id));
     return this.http.get(this.getPathTvShow(id), {headers: new HttpHeaders(), responseType: 'json'});
+  }
+
+  public getCreditTvShow(id): Observable<any> {
+    return this.http.get(this.getPathCreditTvShow(id), {headers: new HttpHeaders(), responseType: 'json'});
+  }
+
+  public getReviewTvShow(id): Observable<any> {
+    return this.http.get(this.getPathReviewTvShow(id), {headers: new HttpHeaders(), responseType: 'json'});
   }
 
   private getPathTvShow(id): string {
     return TV_SHOW + '/' + id + KEY;
+  }
+
+  private getPathCreditTvShow(id): string {
+    return TV_SHOW + '/' + id + TVSHOW_SUFFIX.credits + KEY;
+  }
+
+  private getPathReviewTvShow(id): string {
+    return TV_SHOW + '/' + id + TVSHOW_SUFFIX.reviews + KEY;
   }
 }

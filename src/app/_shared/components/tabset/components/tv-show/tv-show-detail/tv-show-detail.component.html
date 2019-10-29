@@ -1,0 +1,177 @@
+<ng-container *ngIf="this.tvShow$ && loadingComponent === true; then pushed; else loading"></ng-container>
+
+<ng-template #loading>
+  <div class="m-5">
+    <span class="alert alert-warning">
+      downloading data
+    </span>
+  </div>
+</ng-template>
+
+<ng-template #pushed>
+  <section class="container row mt-3">
+    <div class="col-12 col-md-4">
+      <div class="row">
+        <div class="col-12 col-md-4 text-center">
+          <b class="h4">{{ this.tvShow$?.vote_average }}</b>
+          <p>Vote average</p>
+        </div>
+        <div class="col-12 col-md-4 text-center">
+          <b class="h4">{{ this.tvShow$?.vote_count }}</b>
+          <p>Vote count</p>
+        </div>
+        <div class="col-12 col-md-4 text-center">
+          <b class="h4">{{ this.tvShow$?.popularity }}</b>
+          <p>Like</p>
+        </div>
+      </div>
+
+      <div>
+        <h3>Overview</h3>
+        <p>{{ this.tvShow$?.overview }}</p>
+      </div>
+
+      <h2 class="h3">
+        {{ this.tvShow$?.number_of_seasons }} seasons with {{ this.tvShow$?.number_of_episodes}} episodes
+      </h2>
+      <div class="row">
+        <div class="col-12 col-sm-6 col-md-4 text-center mb-2"
+             *ngFor="let season of this.tvShow$?.seasons | slice:1:this.tvShow$?.seasons.length">
+          <img [src]="imagesLinks + 'w92' + season?.poster_path" [alt]="'poster of ' + this.tvShow$?.name">
+          <h3 class="h5">{{season?.name}}</h3>
+          <small class="font-italic">{{season?.episode_count}} episodes</small>
+          <p class="font-weight-lighter">{{ season?.air_date }}</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="col-12 col-md-8">
+      <section id="dates">
+        <h3>Date</h3>
+        <div class="row">
+          <section class="col-12 col-md-3">
+            <b>First air date</b>
+            <p>{{ this.tvShow$?.first_air_date}}</p>
+          </section>
+          <section class="col-12 col-md-3">
+            <b>Last air date</b>
+            <p>{{ this.tvShow$?.last_air_date}}</p>
+          </section>
+        </div>
+      </section>
+      <section id="creator">
+        <b>Created by</b>
+        <div class="row">
+          <section class="col-12 col-md-3 d-flex justify-content-between align-items-center mt-3"
+                   *ngFor="let creator of tvShow$.created_by">
+            <img [src]="imagesLinks + 'w45' + creator.profile_path" alt="">
+            <p>{{ creator.name}}</p>
+          </section>
+        </div>
+      </section>
+      <section class="row mt-3">
+        <div id="genres" class="col-12 col-md-4">
+          <b>Genres</b>
+          <div class="row">
+            <section class="col-12 col-md-9 d-flex justify-content-between"
+                     *ngFor="let genre of tvShow$.genres">
+              <span class="badge badge-secondary align-self-center">{{ genre.name }}</span>
+            </section>
+          </div>
+        </div>
+
+        <div id="countries" class="col-12 col-md-4">
+          <b>Origin Country</b>
+          <div class="row">
+            <div class="col-12 col-md-9 d-flex justify-content-between"
+                 *ngFor="let country of tvShow$.origin_country">
+              {{ country }}
+            </div>
+          </div>
+        </div>
+
+        <div id="original-language" class="col-12 col-md-4">
+          <b>Original Language</b>
+          <div class="row">
+            <p class="col-12 col-md-9 d-flex justify-content-between">
+              {{ this.tvShow$?.original_language }}
+            </p>
+          </div>
+        </div>
+      </section>
+      <section id="production-companies" class="mt-3">
+        <b>Production Companies</b>
+        <section class="row">
+
+          <div class="col-12 col-md-3 text-center" *ngFor="let company of tvShow$?.production_companies">
+            <img height="153" [src]="imagesLinks + 'w92' + company.logo_path" alt="">
+            <ng-container *ngIf="company.origin_country; then origin; else nullify"></ng-container>
+            <ng-template #origin>
+              <p>{{ company.name }} ({{ company.origin_country }})</p>
+            </ng-template>
+            <ng-template #nullify>
+              <p>{{ company.name }}</p>
+            </ng-template>
+          </div>
+        </section>
+
+        <div class="row">
+          <section class="col-12" *ngIf="this.tvShow$.last_episode_to_air">
+            <div class="card episode-card" [ngStyle]="{
+              'background-image': 'url(' + this.imagesLinks + 'original' + this.tvShow$.last_episode_to_air.still_path + ')',
+              'background-size' : 'cover' }">
+              <div class="card-header">
+                <b>Last episode</b> - <small>{{tvShow$?.last_episode_to_air.air_date}}</small>
+              </div>
+              <div class="card-body">
+                <h3>[S{{ tvShow$?.last_episode_to_air.season_number }}
+                  ep. {{ tvShow$?.last_episode_to_air.episode_number }}] {{ tvShow$?.last_episode_to_air.name }}</h3>
+
+                <p>{{tvShow$?.last_episode_to_air.overview}}</p>
+              </div>
+              <div class="card-footer">
+                <section class="row">
+                  <div class="col-12 col-md-2">
+                    <b class="h2">{{tvShow$?.last_episode_to_air.vote_count}}</b>
+                    <p>Vote count</p>
+                  </div>
+                  <div class="col-12 col-md-3">
+                    <b class="h2">{{tvShow$?.last_episode_to_air.vote_average}}</b>
+                    <p>Vote average</p>
+                  </div>
+                </section>
+              </div>
+            </div>
+          </section>
+          <section class="col-12" *ngIf="this.tvShow$.next_episode_to_air">
+            <div class="card episode-card" [ngStyle]="{
+              'background-image': 'url(' + this.imagesLinks + 'original' + this.tvShow$.next_episode_to_air.still_path + ')',
+              'background-size' : 'cover' }">
+              <div class="card-header">
+                <b>Last episode</b> - <small>{{tvShow$?.next_episode_to_air.air_date}}</small>
+              </div>
+              <div class="card-body">
+                <h3>[S{{ tvShow$?.next_episode_to_air.season_number }}
+                  ep. {{ tvShow$?.next_episode_to_air.episode_number }}] {{ tvShow$?.next_episode_to_air.name }}</h3>
+                <p>{{tvShow$?.next_episode_to_air.overview}}</p>
+              </div>
+              <div class="card-footer">
+                <section class="row">
+                  <div class="col-12 col-md-2">
+                    <b class="h2">{{tvShow$?.next_episode_to_air.vote_count}}</b>
+                    <p>Vote count</p>
+                  </div>
+                  <div class="col-12 col-md-3">
+                    <b class="h2">{{tvShow$?.next_episode_to_air.vote_average}}</b>
+                    <p>Vote average</p>
+                  </div>
+                </section>
+              </div>
+            </div>
+          </section>
+        </div>
+      </section>
+    </div>
+  </section>
+</ng-template>
+

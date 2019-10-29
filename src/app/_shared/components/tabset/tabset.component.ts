@@ -1,4 +1,6 @@
 import {Component, Input, OnInit} from '@angular/core';
+import {NavigationEnd, Router} from '@angular/router';
+import {Tabset} from '../../models/tabset';
 
 @Component({
   selector: 'app-tabset',
@@ -7,11 +9,24 @@ import {Component, Input, OnInit} from '@angular/core';
 })
 export class TabsetComponent implements OnInit {
   @Input() public justify: string = 'justified';
-  @Input() public titles: Array<string>;
-  @Input() public content: any;
+  @Input() public tabs: Array<Tabset | null>;
+  @Input() public id: string;
 
-  constructor() {}
+  public activeTabUrl: any;
+  constructor(private router: Router) {}
 
-  ngOnInit() {}
+  public ngOnInit(): void {
+    this.router.events.subscribe( event => {
+      if (event instanceof NavigationEnd) {
+        this.activeTabUrl = event.urlAfterRedirects;
+      }
+    });
+  }
+
+  public onTabChange(event): void {
+    const route = {};
+    this.tabs.map( data => route[data.name] = data.urlPrefix + this.id + data.urlSuffix);
+    this.router.navigateByUrl(route[event.nextId]);
+  }
 
 }
