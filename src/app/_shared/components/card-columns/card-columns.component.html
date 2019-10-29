@@ -1,5 +1,5 @@
 <section class="container mt-3" *ngIf="this.data$">
-  <h1>Popular Movies</h1>
+  <h1>{{ title }}</h1>
   <div class="card-columns">
     <div class="card bg-secondary" *ngFor="let item of this.data$.results">
       <img class="card-img-top" [src]="imageLinks + 'w342' + item.poster_path" alt="Card image cap">

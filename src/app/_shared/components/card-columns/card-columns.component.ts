@@ -1,4 +1,4 @@
-import {Component, Input, OnInit} from '@angular/core';
+import {AfterContentChecked, Component, Input, OnInit} from '@angular/core';
 import {Observable} from 'rxjs';
 import {IMAGES_HOST} from '../../../constant/api.constant';
 
@@ -7,17 +7,18 @@ import {IMAGES_HOST} from '../../../constant/api.constant';
   templateUrl: './card-columns.component.html',
   styleUrls: ['./card-columns.component.scss']
 })
-export class CardColumnsComponent implements OnInit {
+export class CardColumnsComponent implements OnInit, AfterContentChecked {
 
   @Input() private data$: Observable<any>;
+  @Input() private title: string;
 
   public imageLinks: string;
 
-  constructor() {
+  public constructor() {
     this.imageLinks = IMAGES_HOST;
   }
 
-  ngOnInit() {
-  }
+  public ngOnInit() {}
 
+  public ngAfterContentChecked(): void {}
 }

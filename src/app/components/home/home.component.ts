@@ -5,6 +5,7 @@ import {MoviesHttpService} from '../../_shared/services/http/movies-http.service
 import {GenreHttpService} from '../../_shared/services/http/genre-http.service';
 import {HttpErrorResponse} from '@angular/common/http';
 import { IMAGES_HOST } from '../../constant/api.constant';
+import {TvShowHttpService} from '../../_shared/services/http/tv-show-http.service';
 
 @Component({
   selector: 'app-home',
@@ -22,6 +23,7 @@ export class HomeComponent implements OnInit, OnDestroy, AfterViewChecked {
 
   public popularMovies$: Observable<any>;
   public loadingPopularMovies: boolean;
+  public titlePopularMovies: string;
 
   public genreMovieList$: Observable<any>;
 
@@ -33,17 +35,25 @@ export class HomeComponent implements OnInit, OnDestroy, AfterViewChecked {
   public OnAir$: Observable<any>;
   public topRated$: Observable<any>;
   public latestTV$: Observable<any>;
+
   public popularTV$: Observable<any>;
+  public titlePopularTV: string;
+  public loadingPopularTv: boolean;
 
   public error;
 
   constructor(
     private discoverService: DiscoverHttpService,
     private movieService: MoviesHttpService,
-    private genreMovieService: GenreHttpService) {
+    private genreMovieService: GenreHttpService,
+    private tvService: TvShowHttpService) {
       this.loadingDiscoverMovie = false;
       this.loadingLatestMovie = false;
       this.loadingPopularMovies = false;
+      this.loadingPopularTv = false;
+
+      this.titlePopularMovies = 'Popular Movies';
+      this.titlePopularTV = 'Popular TV shows';
   }
 
   public ngOnInit(): void {
@@ -52,6 +62,7 @@ export class HomeComponent implements OnInit, OnDestroy, AfterViewChecked {
 
     this.getMoviesGenre();
     this.getPopularMovies();
+    this.getPopularTV();
   }
 
   public ngAfterViewChecked(): void {}
@@ -100,5 +111,12 @@ export class HomeComponent implements OnInit, OnDestroy, AfterViewChecked {
       );
   }
 
-  private getPopularTV() {}
+  private getPopularTV(): void {
+    this.tvService.getPopularTVShow()
+      .subscribe(
+        (data) => this.popularTV$ = data,
+        (err: HttpErrorResponse) => this.error = err,
+        () => this.loadingPopularTv = true
+      );
+  }
 }

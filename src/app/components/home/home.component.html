@@ -1,7 +1,6 @@
 <section id="home">
-<app-carousel [datas$]="this.discoverMovie$"></app-carousel>
-
-<app-card-columns [data$]="this.popularMovies$" ></app-card-columns>
-
-<app-carousel [datas$]="this.discoverTV$"></app-carousel>
+  <app-carousel [datas$]="this.discoverMovie$"></app-carousel>
+  <app-card-columns [data$]="this.popularMovies$" [title]="this.titlePopularMovies"></app-card-columns>
+  <app-carousel [datas$]="this.discoverTV$"></app-carousel>
+  <app-card-columns [data$]="this.popularTV$" [title]="this.titlePopularTV"></app-card-columns>
 </section>
