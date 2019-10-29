@@ -19,6 +19,7 @@ import { HomeComponent } from './components/home/home.component';
 import { NotFoundComponent } from './components/not-found/not-found.component';
 import { CarouselComponent } from './_shared/components/carousel/carrousel.component';
 import { CardColumnsComponent } from './_shared/components/card-columns/card-columns.component';
+import { PopularPersonComponent } from './_shared/components/popular-person/popular-person.component';
 
 const LAYOUT_COMPONENTS = [
   LayoutTemplateComponent,
@@ -37,7 +38,8 @@ const APP_COMPONENTS = [
     ...LAYOUT_COMPONENTS,
     ...APP_COMPONENTS,
     CarouselComponent,
-    CardColumnsComponent
+    CardColumnsComponent,
+    PopularPersonComponent
   ],
   imports: [
     BrowserModule,
