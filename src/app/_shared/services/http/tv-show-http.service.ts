@@ -27,6 +27,7 @@ export class TvShowHttpService {
   }
 
   public getReviewTvShow(id): Observable<any> {
+    console.log(this.getPathReviewTvShow(id));
     return this.http.get(this.getPathReviewTvShow(id), {headers: new HttpHeaders(), responseType: 'json'});
   }
 

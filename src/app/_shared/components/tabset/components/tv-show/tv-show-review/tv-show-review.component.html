@@ -1,1 +1,8 @@
-<p>tv-show-review works!</p>
+<section class="container mt-3">
+  <blockquote class="blockquote" *ngFor="let review of tvShowReview$.results">
+    <p>{{ review.content }}</p>
+    <footer class="blockquote-footer">
+      {{ review.author}} in <cite title="Source Title"><a [href]="review.url" target="_blank">{{review.url}}</a></cite>
+    </footer>
+  </blockquote>
+</section>
