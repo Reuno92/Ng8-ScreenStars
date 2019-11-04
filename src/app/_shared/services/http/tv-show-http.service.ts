@@ -5,6 +5,7 @@ import {TV_SHOW, TVSHOWS_SUFFIX, TVSHOW_SUFFIX, KEY} from '../../../constant/api
 import {TV} from '../../models/TV/tv';
 import {Credit} from '../../models/TV/Credit';
 import {Review} from '../../models/TV/Review';
+import {Recommendation} from '../../models/TV/Reommendation';
 
 @Injectable({
   providedIn: 'root'
@@ -33,6 +34,10 @@ export class TvShowHttpService {
     return this.http.get<Review>(this.getPathReviewTvShow(id), {headers: new HttpHeaders(), responseType: 'json'});
   }
 
+  public getRecommendations(id): Observable<Recommendation> {
+    return this.http.get<Recommendation>(this.getRecommendationPathTvShow(id), { headers: new HttpHeaders(), responseType: 'json'});
+  }
+
   private getPathTvShow(id): string {
     return TV_SHOW + '/' + id + KEY;
   }
@@ -43,5 +48,9 @@ export class TvShowHttpService {
 
   private getPathReviewTvShow(id): string {
     return TV_SHOW + '/' + id + TVSHOW_SUFFIX.reviews + KEY;
+  }
+
+  private getRecommendationPathTvShow(id): string {
+    return TV_SHOW + '/' + id + TVSHOW_SUFFIX.recommendations + KEY;
   }
 }

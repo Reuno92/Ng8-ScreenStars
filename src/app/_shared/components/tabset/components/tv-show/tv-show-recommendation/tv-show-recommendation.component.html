@@ -1,1 +1,34 @@
-<p>tv-show-recommendation works!</p>
+<section class="mt-2">
+  <div *ngFor="let items of (this.tvShowRecommendation| async)?.results"
+       [id]="items?.name"
+       class="card recommendation"
+       [ngStyle]="{
+            'background-image': 'url(' + this.imagesLinks + 'original' + items?.backdrop_path + ')',
+            'background-size' : 'cover'
+         }">
+    <div class="row no-gutters">
+      <div class="col-md-2">
+        <img src="{{ this.imagesLinks + 'w185' + items?.poster_path }}" class="card-img" alt="...">
+      </div>
+      <div class="col-md-10">
+        <header class="card-header ">
+          <h2>{{ items?.name }} <small>({{ items?.original_name }})</small></h2>
+          <div class="d-flex justify-content-between scores-dates">
+            <span>Average: <b>{{ items?.vote_average }}</b></span>
+            <span>Count: <b>{{ items?.vote_count }}</b></span>
+            <span>Popularity's score: <b>{{ items?.popularity }}</b></span>
+            <span>First air Date: <b>{{ items?.first_air_date | date:'d/MM/yy' }}</b></span>
+          </div>
+        </header>
+        <main class="card-body ">
+          <ng-container *ngIf="items?.overview.length > 333; then short; else normal"></ng-container>
+          <ng-template #short>{{ items?.overview | slice:0:333 }}...</ng-template>
+          <ng-template #normal>{{ items?.overview }}</ng-template>
+        </main>
+        <footer class="card-footer fixed-bottom">
+          Country: {{ items?.origin_country }} | Original Language: {{ items?.original_language }}
+        </footer>
+      </div>
+    </div>
+  </div>
+</section>

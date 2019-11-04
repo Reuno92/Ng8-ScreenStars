@@ -40,4 +40,5 @@ export class TvShowReviewComponent implements OnInit {
       (err: HttpErrorResponse) => this.error = err,
       () => this.loadingComponent = false
     );
-  }}
+  }
+}
