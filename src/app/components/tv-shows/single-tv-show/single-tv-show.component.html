@@ -1,23 +1,18 @@
-<span class="alert alert-danger" *ngIf="!this.tvShow$">
-  Exist !
-</span>
-
-<section *ngIf="this.tvShow$" class="pb-5">
-  <img [src]="imagesLinks + 'original' + this.tvShow$.backdrop_path" alt="backdrop this.tvShow$?.name"
+<section class="pb-5" *ngIf="this.tvShow$ | async">
+  <img [src]="imagesLinks + 'original' + (this.tvShow$ | async)?.backdrop_path" [alt]="'backdrop ' +  (this.tvShow$ | async)?.name"
        class="full-width vh-85">
   <div class="container main bg-dark rounded py-3">
-
-    <h1>{{ this.tvShow$?.name }}</h1>
+    <h1>{{ (this.tvShow$ | async)?.name }}</h1>
     <div class="d-flex justify-content-start align-items-center mb-4">
-      <h2>{{ this.tvShow$?.original_name}}</h2>
-      <ng-container *ngIf="tvShow$.status === 'Ended'; then endedStatus; else otherStatus"></ng-container>
+      <h2>{{ (this.tvShow$ | async)?.original_name}}</h2>
+      <ng-container *ngIf="(tvShow$ | async)?.status === 'Ended'; then endedStatus; else otherStatus"></ng-container>
 
       <ng-template #endedStatus>
-        <span class="badge badge-danger ml-3">{{ this.tvShow$?.status }}</span>
+        <span class="badge badge-danger ml-3">{{ (this.tvShow$ | async)?.status }}</span>
       </ng-template>
 
       <ng-template #otherStatus>
-        <span class="badge badge-success ml-3">{{ this.tvShow$?.status }}</span>
+        <span class="badge badge-success ml-3">{{ (this.tvShow$ | async)?.status }}</span>
       </ng-template>
     </div>
 

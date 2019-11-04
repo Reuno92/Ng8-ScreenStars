@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import {HttpClient, HttpHeaders} from '@angular/common/http';
 import {Observable} from 'rxjs';
 import {TV_SHOW, TVSHOWS_SUFFIX, TVSHOW_SUFFIX, KEY} from '../../../constant/api.constant';
+import {TV} from '../../models/TV/tv';
 
 @Injectable({
   providedIn: 'root'
@@ -18,8 +19,8 @@ export class TvShowHttpService {
     return this.http.get(TV_SHOW + TVSHOWS_SUFFIX.latest + KEY, {headers: new HttpHeaders(), responseType: 'json'});
   }
 
-  public getTVShow(id): Observable<any> {
-    return this.http.get(this.getPathTvShow(id), {headers: new HttpHeaders(), responseType: 'json'});
+  public getTVShow(id): Observable<TV> {
+    return this.http.get<TV>(this.getPathTvShow(id), {headers: new HttpHeaders(), responseType: 'json'});
   }
 
   public getCreditTvShow(id): Observable<any> {

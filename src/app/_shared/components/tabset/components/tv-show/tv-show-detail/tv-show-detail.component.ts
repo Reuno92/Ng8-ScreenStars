@@ -5,6 +5,7 @@ import {ActivatedRoute, ParamMap, Params} from '@angular/router';
 import {Observable, pipe} from 'rxjs';
 import {IMAGES_HOST} from '../../../../../../constant/api.constant';
 import {map, switchMap, take} from 'rxjs/operators';
+import {TV} from '../../../../../models/TV/tv';
 
 @Component({
   selector: 'app-detail',
@@ -15,7 +16,7 @@ export class TvShowDetailComponent implements OnInit {
 
   public id: string;
 
-  public tvShow$: Observable<any>;
+  public tvShow$: Observable<TV>;
   public error: HttpErrorResponse;
   public loadingTvShow: boolean;
 
@@ -34,11 +35,7 @@ export class TvShowDetailComponent implements OnInit {
   private getTVShow() {
     this.loadingTvShow = true;
     this.getId();
-    this.tvService.getTVShow(this.id).subscribe(
-      data => this.tvShow$ = data,
-      (err: HttpErrorResponse) => this.error = err,
-      () => this.loadingTvShow = false
-    );
+    this.tvShow$ = this.tvService.getTVShow(this.id);
   }
 
   private getId() {
