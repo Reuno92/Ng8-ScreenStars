@@ -1,7 +1,7 @@
-<div class="container mt-3" *ngIf="tvShowCasting$">
+<div class="container mt-3">
   <h2>Casting</h2>
   <div class="row">
-    <div class="col-12 col-sm-6 col-md-3 col-lg-2" *ngFor="let cast of this.tvShowCasting$.cast">
+    <div class="col-12 col-sm-6 col-md-3 col-lg-2" *ngFor="let cast of (this.tvShowCasting$|async)?.cast">
       <div class="card card-cast">
         <img class="card-img-top" [src]="this.imagesLinks + 'w185' + cast.profile_path" alt="">
         <div class="card-body">
@@ -12,7 +12,7 @@
   </div>
   <h2>Crew</h2>
   <div class="row">
-    <div class="col-12 col-sm-6 col-md-3 col-lg-2" *ngFor="let crew of this.tvShowCasting$.crew">
+    <div class="col-12 col-sm-6 col-md-3 col-lg-2" *ngFor="let crew of (this.tvShowCasting$|async)?.crew">
       <div class="card card-cast">
         <img class="card-img-top" [src]="this.imagesLinks + 'w185' + crew.profile_path" alt="">
         <div class="card-body">

@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import {HttpErrorResponse} from '@angular/common/http';
 import {Observable} from 'rxjs';
-import {IMAGES_HOST} from '../../../../../../constant/api.constant';
 import {TvShowHttpService} from '../../../../../services/http/tv-show-http.service';
 import {ActivatedRoute} from '@angular/router';
 
@@ -30,11 +29,8 @@ export class TvShowReviewComponent implements OnInit {
   private getReviewTVShow(): void {
     this.loadingTvShow = true;
     this.getId();
-    this.tvService.getReviewTvShow(this.id).subscribe(
-      data => this.tvShowReview$ = data,
-      (err: HttpErrorResponse) => this.error = err,
-      () => this.loadingTvShow = false
-    );
+
+    this.tvShowReview$ = this.tvService.getReviewTvShow(this.id);
   }
 
   private getId(): void {

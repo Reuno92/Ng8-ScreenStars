@@ -38,11 +38,7 @@ export class TvShowCastingComponent implements OnInit {
   private getCreditsTVShow() {
     this.loadingCastingTvShow = true;
     this.getId();
-    this.tvService.getCreditTvShow(this.id).subscribe(
-      data => this.tvShowCasting$ = data,
-      (err: HttpErrorResponse) => this.error = err,
-      () => this.loadingCastingTvShow = false
-    );
+    this.tvShowCasting$ = this.tvService.getCreditTvShow(this.id);
   }
 
   private getId() {

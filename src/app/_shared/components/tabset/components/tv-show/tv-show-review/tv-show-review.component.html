@@ -1,8 +1,8 @@
 <section class="container mt-3">
-  <blockquote class="blockquote" *ngFor="let review of tvShowReview$.results">
-    <p>{{ review.content }}</p>
+  <blockquote class="blockquote border-bottom pb-3" *ngFor="let review of (this.tvShowReview$| async )?.results">
+    <p>{{ review?.content }}</p>
     <footer class="blockquote-footer">
-      {{ review.author}} in <cite title="Source Title"><a [href]="review.url" target="_blank">{{review.url}}</a></cite>
+      {{ review?.author}} in <cite title="Source Title"><a [href]="review?.url" target="_blank">{{review?.url}}</a></cite>
     </footer>
   </blockquote>
 </section>
