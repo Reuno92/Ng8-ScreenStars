@@ -1,0 +1,16 @@
+<ng-container [ngSwitch]="video.site">
+  <ng-template *ngSwitchCase="'youtube'">
+    <iframe [src]="this.source[video.site] + this.video.key + '?autoplay=' + autoplay"></iframe>
+  </ng-template>
+
+  <ng-template *ngSwitchCase="'vimeo'">
+    <iframe [src]="this.source[video.site] + this.video.key" [attr.allow]="this.autoplay ? 'autoplay' : null"></iframe>
+  </ng-template>
+</ng-container>
+
+<section class="container">
+  <p>If the video don't play please click on this
+    <a href="{{ this.source[video.site] }} + {{ this.video.key }}" target="_blank">link</a>
+  </p>
+</section>
+

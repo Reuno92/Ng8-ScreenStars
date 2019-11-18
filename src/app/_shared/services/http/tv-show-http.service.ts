@@ -9,6 +9,7 @@ import {Recommendation} from '../../models/TV/Recommendation';
 import {Similar} from '../../models/TV/Similar';
 import {Translation} from '../../models/TV/Translation';
 import {Rating} from '../../models/TV/Rating';
+import {Video} from '../../models/TV';
 
 @Injectable({
   providedIn: 'root'
@@ -53,8 +54,16 @@ export class TvShowHttpService {
     return this.http.get<Translation>(this.getPathTranslationTvShow(id), {headers: new HttpHeaders(), responseType: 'json'})
   }
 
+  public getVideosTVShow(id): Observable<Video> {
+    return this.http.get<Video>(this.getPathTvShowTabs(id, TVSHOW_SUFFIX.videos),{headers: new HttpHeaders(), responseType: 'json'})
+  }
+
   private getPathTvShow(id): string {
     return TV_SHOW + '/' + id + KEY;
+  }
+
+  private getPathTvShowTabs(id, suffix, prefix = '') {
+    return TV_SHOW + '/' + prefix + id + suffix + KEY;
   }
 
   private getPathCreditTvShow(id): string {
@@ -79,5 +88,9 @@ export class TvShowHttpService {
 
   private getPathTranslationTvShow(id): string {
     return TV_SHOW + '/' + id + TVSHOW_SUFFIX.translations + KEY;
+  }
+
+  private getpathVideoTvShow(id): string {
+    return TV_SHOW + '/' + id + TVSHOW_SUFFIX.videos + KEY;
   }
 }

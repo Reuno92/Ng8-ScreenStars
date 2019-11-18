@@ -6,7 +6,7 @@ export class Video {
   ) {}
 }
 
-class VideoResult {
+export class VideoResult {
   constructor(
     public id?: string,
     public iso_3166_1?: string,
