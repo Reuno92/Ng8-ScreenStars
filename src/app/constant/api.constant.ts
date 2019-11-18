@@ -1,4 +1,4 @@
-import {ListRef} from '../models/refList';
+import {ListRef} from '../_shared/models/refList';
 
 export const HOST = 'https://api.themoviedb.org/';
 const PORT = '';

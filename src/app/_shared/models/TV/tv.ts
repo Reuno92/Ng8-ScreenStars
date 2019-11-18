@@ -1,4 +1,4 @@
-import {ListRef} from '../../../models/refList';
+import {ListRef} from '../refList';
 
 export class TV {
   constructor(
