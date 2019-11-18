@@ -1,4 +1,10 @@
 import { Component, OnInit } from '@angular/core';
+import {HttpErrorResponse} from '@angular/common/http';
+import {TvShowHttpService} from '../../../../../services/http/tv-show-http.service';
+import {ActivatedRoute} from '@angular/router';
+import {Observable} from 'rxjs';
+import {Similar} from '../../../../../models/TV/similar';
+import {IMAGES_HOST} from '../../../../../../constant/api.constant';
 
 @Component({
   selector: 'app-tv-show-similar',
@@ -7,9 +13,34 @@ import { Component, OnInit } from '@angular/core';
 })
 export class TvShowSimilarComponent implements OnInit {
 
-  constructor() { }
+  private id: number;
+  private error: HttpErrorResponse;
+  private loadingComponent: Boolean;
 
-  ngOnInit() {
+  private similarTvShow$: Observable<Similar>;
+  private imagesLinks: string;
+
+  constructor(private tvShowHttpService: TvShowHttpService, private route: ActivatedRoute) {
+    this.imagesLinks = IMAGES_HOST;
+    this.loadingComponent = false;
   }
 
+  ngOnInit() {
+    this.getSimilarTvShow();
+
+    this.similarTvShow$.subscribe( data => console.log(data));
+  }
+
+  getSimilarTvShow() {
+    this.getId();
+    this.similarTvShow$ = this.tvShowHttpService.getSimilarTVShow(this.id);
+  }
+
+  private getId(): void {
+    this.route.parent.params.subscribe(
+      data => this.id = data.id,
+      (err: HttpErrorResponse) => this.error = err,
+      () => this.loadingComponent = false
+    );
+  }
 }

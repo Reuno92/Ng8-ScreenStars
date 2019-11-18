@@ -1,1 +1,38 @@
-<p>tv-show-similar works!</p>
+<section class="mt-2">
+  <div *ngFor="let item of (similarTvShow$ | async)?.results"
+       [id]="item?.name"
+       class="card similar"
+       [ngStyle]="{
+            'background-image': 'url(' + this.imagesLinks + 'original' + item?.backdrop_path + ')',
+            'background-size' : 'cover'
+         }">
+    <div class="row no-gutters">
+      <div class="col-md-2">
+        <img src="{{ this.imagesLinks + 'w185' + item?.poster_path }}" class="card-img"
+             alt="Poster of {{ item?.name }}">
+      </div>
+      <div class="col-md-10">
+        <header class="card-header">
+          <h2>
+            {{ item?.name }} <small>({{ item?.original_name }})</small>
+          </h2>
+          <div class="d-flex justify-content-between scores-dates">
+            <span>Average: <b>{{ item?.vote_average }}</b></span>
+            <span>Count: <b>{{ item?.vote_count }}</b></span>
+            <span>Popularity's score: <b>{{ item?.popularity }}</b></span>
+            <span>First air Date: <b>{{ item?.first_air_date | date:'d/MM/yy' }}</b></span>
+          </div>
+        </header>
+        <main class="card-body ">
+          <ng-container *ngIf="item?.overview.length > 333; then short; else normal"></ng-container>
+          <ng-template #short>{{ item?.overview | slice:0:333 }}...</ng-template>
+          <ng-template #normal>{{ item?.overview }}</ng-template>
+        </main>
+        <footer class="card-footer fixed-bottom">
+          Country: {{ item?.origin_country }} | Original Language: {{ item?.original_language }}
+        </footer>
+      </div>
+    </div>
+
+  </div>
+</section>

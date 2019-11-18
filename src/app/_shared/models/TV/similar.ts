@@ -23,5 +23,5 @@ class SimilarResult {
     public origin_country: Array<string>,
     public genre_ids: Array<number>,
     public vote_count: number
-  )
+  ) {}
 }

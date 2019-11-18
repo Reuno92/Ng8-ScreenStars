@@ -1,0 +1,29 @@
+.similar {
+  position: relative;
+  margin-bottom: 1rem;
+  border: 0 solid transparent;
+
+  .card-img {
+    border-radius: .25rem 0 0 .25rem;
+  }
+
+  .card-header {
+    border-radius: 0 .25rem 0 0;
+  }
+
+  .card-footer {
+    position: absolute;
+    border-radius: 0 0 .25rem 0;
+  }
+
+  .card-header, .card-footer {
+    background-color: rgba(52, 58, 64, .75);
+  }
+
+  .card-body {
+    min-height: 135px;
+    background-color: rgba(52, 58, 64, .35);
+  }
+
+
+}
