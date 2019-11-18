@@ -1,26 +1,30 @@
-import { Injectable } from '@angular/core';
+import {Injectable} from '@angular/core';
 import {HttpClient, HttpHeaders} from '@angular/common/http';
 import {Observable} from 'rxjs';
-import {TV_SHOW, TVSHOWS_SUFFIX, TVSHOW_SUFFIX, KEY} from '../../../constant/api.constant';
-import {TV, Credit, Review, Recommendation, Similar, Translation, Rating, Video } from '../../models/TV';
+import {TVSHOW_SUFFIX, TVSHOWS_SUFFIX} from '../../../constant/api.constant';
+import {Credit, Rating, Recommendation, Review, Similar, Translation, TV, Video} from '../../models/TV';
+import {PathHttpService} from '../../utils/path-http.service';
 
 @Injectable({
   providedIn: 'root'
 })
 export class TvShowHttpService {
 
-  constructor(private http: HttpClient) { }
+  constructor(private http: HttpClient, private pathHttpService: PathHttpService) { }
 
   public getPopularTVShow(): Observable<any> {
-    return this.http.get(TV_SHOW + TVSHOWS_SUFFIX.popular + KEY, {headers: new HttpHeaders(), responseType: 'json'});
+    return this.http.get(this.getPathTvShow('', TVSHOWS_SUFFIX.popular),
+      {headers: new HttpHeaders(), responseType: 'json'});
   }
 
   public getLatestTVShow(): Observable<any> {
-    return this.http.get(TV_SHOW + TVSHOWS_SUFFIX.latest + KEY, {headers: new HttpHeaders(), responseType: 'json'});
+    return this.http.get(this.getPathTvShow('', TVSHOWS_SUFFIX.latest),
+      {headers: new HttpHeaders(), responseType: 'json'});
   }
 
   public getTVShow(id): Observable<TV> {
-    return this.http.get<TV>(this.getPathTvShow(id), {headers: new HttpHeaders(), responseType: 'json'});
+    return this.http.get<TV>(this.getPathTvShow(id),
+      {headers: new HttpHeaders(), responseType: 'json'});
   }
 
   public getCreditTvShow(id): Observable<Credit> {
@@ -57,15 +61,8 @@ export class TvShowHttpService {
     return this.http.get<Video>(this.getPathTvShow(id, TVSHOW_SUFFIX.videos),
       {headers: new HttpHeaders(), responseType: 'json'})
   }
-
-  /**
-   * Help to create a path with api.
-   * It's better one method than a multiple methods for each endpoint
-   * @param id
-   * @param suffix
-   * @param prefix empty string by default
-   */
-  private getPathTvShow(id, suffix = '', prefix = '') {
-    return TV_SHOW + '/' + prefix + id + suffix + KEY;
+  
+  private getPathTvShow(id = '', suffix = '', prefix = '') {
+    return this.pathHttpService.getPathTvShow(id, suffix, prefix);
   }
 }
