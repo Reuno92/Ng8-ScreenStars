@@ -29,8 +29,6 @@ export class TvShowRecommendationComponent implements OnInit {
 
   ngOnInit() {
     this.getRecommendationTVShow();
-
-    this.tvShowRecommendation.subscribe(data => console.log(data));
   }
 
   private getRecommendationTVShow() {
