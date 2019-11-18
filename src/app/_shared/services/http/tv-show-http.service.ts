@@ -61,7 +61,14 @@ export class TvShowHttpService {
     return this.http.get<Video>(this.getPathTvShow(id, TVSHOW_SUFFIX.videos),
       {headers: new HttpHeaders(), responseType: 'json'})
   }
-  
+
+  /**
+   * Help to create a path with api.
+   * It's better one method than a multiple methods for each endpoint
+   * @param id
+   * @param suffix
+   * @param prefix empty string by default
+   */
   private getPathTvShow(id = '', suffix = '', prefix = '') {
     return this.pathHttpService.getPathTvShow(id, suffix, prefix);
   }
