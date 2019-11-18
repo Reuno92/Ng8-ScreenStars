@@ -6,4 +6,4 @@ export * from './Similar';
 export * from './Translation';
 export * from './Territorial';
 export * from './Rating';
-
+export * from './Video';

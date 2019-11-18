@@ -48,6 +48,7 @@ import { TvShowTerritorialComponent } from './_shared/components/tabset/componen
 import { TvShowVideosComponent } from './_shared/components/tabset/components/tv-show/tv-show-videos/tv-show-videos.component';
 import { TvShowVisualsComponent } from './_shared/components/tabset/components/tv-show/tv-show-visuals/tv-show-visuals.component';
 import {TvShowTabsetService} from './_shared/services/tabset/tv-show-tabset.service';
+import { EmbedVideoComponent } from './_shared/utils/embed-video/embed-video.component';
 const APP_COMPONENTS = [
   HomeComponent,
   NotFoundComponent,
@@ -73,7 +74,8 @@ const APP_COMPONENTS = [
     TvShowSimilarComponent,
     TvShowTerritorialComponent,
     TvShowVideosComponent,
-    TvShowVisualsComponent
+    TvShowVisualsComponent,
+    EmbedVideoComponent
   ],
   imports: [
     BrowserModule,

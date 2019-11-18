@@ -180,6 +180,11 @@ const TRENDING_TIME_WINDOWS: Array<ListRef> = [
   {id: 3, name: 'week'}
 ];
 
+export const VIDEO = {
+  size: [360, 480, 720, 1080],
+  type: ['Trailer', 'Teaser', 'Clip', 'Featurette', 'Opening Credits', 'Behind the Scenes', 'Bloopers']
+};
+
 // Configuration
 const CONFIG = `${HOST}3/configuration/`;
 const CONFIG_COUNTRIES = `${CONFIG}/countries/`;
