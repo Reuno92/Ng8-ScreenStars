@@ -7,6 +7,8 @@ import {Credit} from '../../models/TV/Credit';
 import {Review} from '../../models/TV/Review';
 import {Recommendation} from '../../models/TV/Reommendation';
 import {Similar} from '../../models/TV/similar';
+import {Translation} from '../../models/TV/Translation';
+import {Rating} from '../../models/TV/Rating';
 
 @Injectable({
   providedIn: 'root'
@@ -43,6 +45,14 @@ export class TvShowHttpService {
     return this.http.get<Similar>(this.getPathSimilarTvShow(id), {headers: new HttpHeaders(), responseType: 'json'});
   }
 
+  public getContentTVShow(id): Observable<Rating> {
+    return this.http.get<Rating>(this.getPathContentRatingTvShow(id), {headers: new HttpHeaders(), responseType: 'json'})
+  }
+
+  public getTranslationsTVShow(id): Observable<Translation> {
+    return this.http.get<Translation>(this.getPathTranslationTvShow(id), {headers: new HttpHeaders(), responseType: 'json'})
+  }
+
   private getPathTvShow(id): string {
     return TV_SHOW + '/' + id + KEY;
   }
@@ -58,7 +68,16 @@ export class TvShowHttpService {
   private getRecommendationPathTvShow(id): string {
     return TV_SHOW + '/' + id + TVSHOW_SUFFIX.recommendations + KEY;
   }
+
   private getPathSimilarTvShow(id): string {
     return TV_SHOW + '/' + id + TVSHOW_SUFFIX.similar + KEY;
+  }
+
+  private getPathContentRatingTvShow(id): string {
+    return TV_SHOW + '/' + id + TVSHOW_SUFFIX.content_rating + KEY;
+  }
+
+  private getPathTranslationTvShow(id): string {
+    return TV_SHOW + '/' + id + TVSHOW_SUFFIX.translations + KEY;
   }
 }
