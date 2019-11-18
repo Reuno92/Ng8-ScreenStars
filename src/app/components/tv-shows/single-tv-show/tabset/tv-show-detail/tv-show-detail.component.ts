@@ -1,11 +1,11 @@
 import { Component, OnInit } from '@angular/core';
 import {HttpErrorResponse} from '@angular/common/http';
-import {TvShowHttpService} from '../../../../../services/http/tv-show-http.service';
+import {TvShowHttpService} from '../../../../../_shared/services/http/tv-show-http.service';
 import {ActivatedRoute, ParamMap, Params} from '@angular/router';
 import {Observable, pipe} from 'rxjs';
-import {IMAGES_HOST} from '../../../../../../constant/api.constant';
+import {IMAGES_HOST} from '../../../../../constant/api.constant';
 import {map, switchMap, take} from 'rxjs/operators';
-import {TV} from '../../../../../models/TV';
+import {TV} from '../../../../../_shared/models/TV';
 
 @Component({
   selector: 'app-detail',

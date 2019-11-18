@@ -3,8 +3,8 @@ import {HttpErrorResponse} from '@angular/common/http';
 import {forkJoin, Observable, of} from 'rxjs';
 import {catchError} from 'rxjs/operators';
 import {ActivatedRoute} from '@angular/router';
-import {Translation, Rating, Territorial} from '../../../../../models/TV';
-import {TvShowHttpService} from '../../../../../services/http/tv-show-http.service';
+import {Translation, Rating, Territorial} from '../../../../../_shared/models/TV';
+import {TvShowHttpService} from '../../../../../_shared/services/http/tv-show-http.service';
 
 @Component({
   selector: 'app-tv-show-territorial',

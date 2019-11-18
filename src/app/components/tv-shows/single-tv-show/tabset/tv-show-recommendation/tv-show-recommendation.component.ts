@@ -1,10 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import {HttpClient, HttpErrorResponse} from '@angular/common/http';
-import {TvShowHttpService} from '../../../../../services/http/tv-show-http.service';
+import {TvShowHttpService} from '../../../../../_shared/services/http/tv-show-http.service';
 import {ActivatedRoute} from '@angular/router';
 import {Observable} from 'rxjs';
-import {Recommendation} from '../../../../../models/TV/Recommendation';
-import { IMAGES_HOST } from '../../../../../../constant/api.constant';
+import {Recommendation} from '../../../../../_shared/models/TV/Recommendation';
+import {IMAGES_HOST} from '../../../../../constant/api.constant';
 
 @Component({
   selector: 'app-tv-show-recommendation',

@@ -14,14 +14,14 @@ import {MoviesComponent} from './components/movies/movies.component';
 import {SingleMovieComponent} from './components/movies/single-movie/single-movie.component';
 import {TrendingComponent} from './components/trending/trending.component';
 import {SinglePersonComponent} from './components/person/single-person/single-person.component';
-import {TvShowDetailComponent} from './_shared/components/tabset/components/tv-show/tv-show-detail/tv-show-detail.component';
-import {TvShowCastingComponent} from './_shared/components/tabset/components/tv-show/tv-show-casting/tv-show-casting.component';
-import {TvShowReviewComponent} from './_shared/components/tabset/components/tv-show/tv-show-review/tv-show-review.component';
-import {TvShowRecommendationComponent} from './_shared/components/tabset/components/tv-show/tv-show-recommendation/tv-show-recommendation.component';
-import {TvShowSimilarComponent} from './_shared/components/tabset/components/tv-show/tv-show-similar/tv-show-similar.component';
-import {TvShowTerritorialComponent} from './_shared/components/tabset/components/tv-show/tv-show-territorial/tv-show-territorial.component';
-import {TvShowVideosComponent} from './_shared/components/tabset/components/tv-show/tv-show-videos/tv-show-videos.component';
-import {TvShowVisualsComponent} from './_shared/components/tabset/components/tv-show/tv-show-visuals/tv-show-visuals.component';
+import {TvShowDetailComponent} from './components/tv-shows/single-tv-show/tabset/tv-show-detail/tv-show-detail.component';
+import {TvShowCastingComponent} from './components/tv-shows/single-tv-show/tabset/tv-show-casting/tv-show-casting.component';
+import {TvShowReviewComponent} from './components/tv-shows/single-tv-show/tabset/tv-show-review/tv-show-review.component';
+import {TvShowRecommendationComponent} from './components/tv-shows/single-tv-show/tabset/tv-show-recommendation/tv-show-recommendation.component';
+import {TvShowSimilarComponent} from './components/tv-shows/single-tv-show/tabset/tv-show-similar/tv-show-similar.component';
+import {TvShowTerritorialComponent} from './components/tv-shows/single-tv-show/tabset/tv-show-territorial/tv-show-territorial.component';
+import {TvShowVideosComponent} from './components/tv-shows/single-tv-show/tabset/tv-show-videos/tv-show-videos.component';
+import {TvShowVisualsComponent} from './components/tv-shows/single-tv-show/tabset/tv-show-visuals/tv-show-visuals.component';
 
 export const routes: Routes = [
   {

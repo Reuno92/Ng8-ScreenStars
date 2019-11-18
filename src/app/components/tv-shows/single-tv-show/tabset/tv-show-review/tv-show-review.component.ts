@@ -1,9 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import {HttpErrorResponse} from '@angular/common/http';
 import {Observable} from 'rxjs';
-import {TvShowHttpService} from '../../../../../services/http/tv-show-http.service';
+import {TvShowHttpService} from '../../../../../_shared/services/http/tv-show-http.service';
 import {ActivatedRoute} from '@angular/router';
-import {Review} from '../../../../../models/TV';
+import {Review} from '../../../../../_shared/models/TV';
 
 @Component({
   selector: 'app-tv-show-review',

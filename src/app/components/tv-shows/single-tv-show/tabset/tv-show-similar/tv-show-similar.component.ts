@@ -1,10 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import {HttpErrorResponse} from '@angular/common/http';
-import {TvShowHttpService} from '../../../../../services/http/tv-show-http.service';
+import {TvShowHttpService} from '../../../../../_shared/services/http/tv-show-http.service';
 import {ActivatedRoute} from '@angular/router';
 import {Observable} from 'rxjs';
-import {Similar} from '../../../../../models/TV';
-import {IMAGES_HOST} from '../../../../../../constant/api.constant';
+import {Similar} from '../../../../../_shared/models/TV';
+import {IMAGES_HOST} from '../../../../../constant/api.constant';
 
 @Component({
   selector: 'app-tv-show-similar',

@@ -1,0 +1,17 @@
+<ng-template>
+  <app-embed-video [video]="this.firstInList" [autoplay]="true"></app-embed-video>
+</ng-template>
+
+<section>
+  <ul class="list-group list-group-flush">
+    <li class="list-group-item list-group-item-secondary d-flex justify-content-between"
+        *ngFor="let item of (this.videos$ | async)?.results">
+      {{ item?.name }} - {{ item?.type}} - ({{ item?.iso_639_1 }} - {{item?.iso_3166_1}})
+      <button class="btn btn-sm btn-primary">Watch</button>
+    </li>
+  </ul>
+</section>
+
+
+
+
