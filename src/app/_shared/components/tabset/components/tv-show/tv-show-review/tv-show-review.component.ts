@@ -3,6 +3,7 @@ import {HttpErrorResponse} from '@angular/common/http';
 import {Observable} from 'rxjs';
 import {TvShowHttpService} from '../../../../../services/http/tv-show-http.service';
 import {ActivatedRoute} from '@angular/router';
+import {Review} from '../../../../../models/TV';
 
 @Component({
   selector: 'app-tv-show-review',
@@ -13,7 +14,7 @@ export class TvShowReviewComponent implements OnInit {
 
   public id: string;
 
-  public tvShowReview$: Observable<any>;
+  public tvShowReview$: Observable<Review>;
   public error: HttpErrorResponse;
   public loadingTvShow: boolean;
 

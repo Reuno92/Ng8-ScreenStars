@@ -1,29 +1,25 @@
-import {Component, OnDestroy, OnInit} from '@angular/core';
-import {HttpClient, HttpErrorResponse} from '@angular/common/http';
-import {TvShowHttpService} from '../../../../../services/http/tv-show-http.service';
-import {Observable, forkJoin, Subscription, of, concat} from 'rxjs';
+import {Component, OnInit} from '@angular/core';
+import {HttpErrorResponse} from '@angular/common/http';
+import {forkJoin, Observable, of} from 'rxjs';
+import {catchError} from 'rxjs/operators';
 import {ActivatedRoute} from '@angular/router';
-import {Translation} from '../../../../../models/TV/Translation';
-import {Rating} from '../../../../../models/TV/Rating';
-import {catchError, concatMap, filter, map, switchMap} from 'rxjs/operators';
-import {Territorial} from '../../../../../models/TV/Territorial';
+import {Translation, Rating, Territorial} from '../../../../../models/TV';
+import {TvShowHttpService} from '../../../../../services/http/tv-show-http.service';
 
 @Component({
   selector: 'app-tv-show-territorial',
   templateUrl: './tv-show-territorial.component.html',
   styleUrls: ['./tv-show-territorial.component.scss']
 })
-export class TvShowTerritorialComponent implements OnInit, OnDestroy {
+export class TvShowTerritorialComponent implements OnInit {
 
   private id: number;
   private error: HttpErrorResponse;
   private loadingComponent: Boolean;
 
-  contentRating$: Observable<Rating>;
-  translations$: Observable<Translation>;
-  results: Territorial;
-
-  territorial$: Subscription;
+  public contentRating$: Observable<Rating>;
+  public translations$: Observable<Translation>;
+  public results: Territorial;
 
   constructor(
     private tvShowHttpService: TvShowHttpService,
@@ -36,10 +32,6 @@ export class TvShowTerritorialComponent implements OnInit, OnDestroy {
     this.getTerritorial();
   }
 
-  ngOnDestroy(): void {
-    this.territorial$.unsubscribe();
-  }
-
   getTerritorial() {
     this.getId();
     this.contentRating$ = this.tvShowHttpService.getContentTVShow(this.id);
@@ -48,13 +40,22 @@ export class TvShowTerritorialComponent implements OnInit, OnDestroy {
     this.contentRating$.subscribe(data => console.log('content rating', data));
     this.translations$.subscribe(data => console.log('translation', data));
 
-    this.territorial$ = forkJoin([this.contentRating$, this.translations$]).pipe(
+    forkJoin([this.contentRating$, this.translations$]).pipe(
       catchError( val => of(val))
     ).subscribe(
       (data) => this.results = { id: data[0].id, ratings: data[0].results, translations: data[1].translations },
       (err: HttpErrorResponse) => this.error = err,
-      () => { this.loadingComponent = false; console.log(this.results) }
+      () => { this.loadingComponent = false }
     )
+  }
+
+  /**
+   * return rating by iso_3166_1
+   * @param iso
+   */
+  private getRating(iso): string {
+    let item = this.results.ratings.find( x => x.iso_3166_1 === iso);
+    return (item !== undefined) ? item.rating : 'No'
   }
 
   private getId(): void {

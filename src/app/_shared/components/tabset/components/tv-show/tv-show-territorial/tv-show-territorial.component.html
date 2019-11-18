@@ -29,8 +29,17 @@
           N/D
         </ng-template>
       </td>
-      <td>{{ item?.data.overview }}</td>
       <td>
+        <ng-container *ngIf="item?.data.overview; then hasOverview else emptyOverview"></ng-container>
+          <ng-template #hasOverview>
+            {{ item?.data.overview }}
+          </ng-template>
+          <ng-template #emptyOverview>
+            No description
+          </ng-template>
+      </td>
+      <td *ngIf="item?.iso_3166_1">
+        {{ getRating(item?.iso_3166_1) }}
       </td>
     </tr>
     </tbody>

@@ -4,6 +4,7 @@ import {TvShowHttpService} from '../../../../../services/http/tv-show-http.servi
 import {Observable} from 'rxjs';
 import {ActivatedRoute} from '@angular/router';
 import {IMAGES_HOST} from '../../../../../../constant/api.constant';
+import {Credit} from '../../../../../models/TV';
 
 @Component({
   selector: 'app-tv-show-casting',
@@ -18,7 +19,7 @@ export class TvShowCastingComponent implements OnInit {
 
   public loadingComponent: boolean;
 
-  public tvShowCasting$: Observable<any>;
+  public tvShowCasting$: Observable<Credit>;
   public loadingCastingTvShow: boolean;
 
 

@@ -1,5 +1,5 @@
-import { ResultRating } from './Rating';
-import {ResultTranslation } from './Translation';
+import {ResultRating} from './Rating';
+import {ResultTranslation} from './Translation';
 
 export class Territorial {
 

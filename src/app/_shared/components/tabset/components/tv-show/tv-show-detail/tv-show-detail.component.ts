@@ -5,7 +5,7 @@ import {ActivatedRoute, ParamMap, Params} from '@angular/router';
 import {Observable, pipe} from 'rxjs';
 import {IMAGES_HOST} from '../../../../../../constant/api.constant';
 import {map, switchMap, take} from 'rxjs/operators';
-import {TV} from '../../../../../models/TV/tv';
+import {TV} from '../../../../../models/TV';
 
 @Component({
   selector: 'app-detail',

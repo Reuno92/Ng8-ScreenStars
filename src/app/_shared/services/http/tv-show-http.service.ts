@@ -5,8 +5,8 @@ import {TV_SHOW, TVSHOWS_SUFFIX, TVSHOW_SUFFIX, KEY} from '../../../constant/api
 import {TV} from '../../models/TV/tv';
 import {Credit} from '../../models/TV/Credit';
 import {Review} from '../../models/TV/Review';
-import {Recommendation} from '../../models/TV/Reommendation';
-import {Similar} from '../../models/TV/similar';
+import {Recommendation} from '../../models/TV/Recommendation';
+import {Similar} from '../../models/TV/Similar';
 import {Translation} from '../../models/TV/Translation';
 import {Rating} from '../../models/TV/Rating';
 

@@ -3,7 +3,7 @@ import {HttpErrorResponse} from '@angular/common/http';
 import {TvShowHttpService} from '../../../../../services/http/tv-show-http.service';
 import {ActivatedRoute} from '@angular/router';
 import {Observable} from 'rxjs';
-import {Similar} from '../../../../../models/TV/similar';
+import {Similar} from '../../../../../models/TV';
 import {IMAGES_HOST} from '../../../../../../constant/api.constant';
 
 @Component({
