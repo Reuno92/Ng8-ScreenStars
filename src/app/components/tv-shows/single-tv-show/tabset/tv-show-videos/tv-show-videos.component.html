@@ -1,13 +1,18 @@
-<ng-template>
-  <app-embed-video [video]="this.firstInList" [autoplay]="true"></app-embed-video>
-</ng-template>
+<section *ngIf="onAir" class="text-center">
+  <h2>{{ onAir?.name }}</h2>
+  <div [ngStyle]="{'background-color': 'black'}">
+    <youtube-player [videoId]="onAir.key" [suggestedQuality]="quality(onAir.size)"></youtube-player>
+  </div>
+
+</section>
 
 <section>
   <ul class="list-group list-group-flush">
     <li class="list-group-item list-group-item-secondary d-flex justify-content-between"
         *ngFor="let item of (this.videos$ | async)?.results">
-      {{ item?.name }} - {{ item?.type}} - ({{ item?.iso_639_1 }} - {{item?.iso_3166_1}})
-      <button class="btn btn-sm btn-primary">Watch</button>
+      <span><b>{{ item?.name }}</b> - <i [ngClass]="getTag(item?.type)">{{ item?.type }}</i> - [{{ item?.iso_639_1 }}
+        -{{item?.iso_3166_1}}]</span>
+      <button class="btn btn-sm btn-primary" (click)="change(item)">Watch</button>
     </li>
   </ul>
 </section>

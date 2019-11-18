@@ -7,8 +7,11 @@ import {HttpClientModule} from '@angular/common/http';
 
 // Third party modules
 import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
+import {YouTubePlayerModule} from '@angular/youtube-player';
+
 const THIRD_PARTY_MODULES = [
   NgbModule,
+  YouTubePlayerModule
 ];
 
 // App Component
@@ -48,7 +51,6 @@ import {TvShowTerritorialComponent} from './components/tv-shows/single-tv-show/t
 import {TvShowVideosComponent} from './components/tv-shows/single-tv-show/tabset/tv-show-videos/tv-show-videos.component';
 import {TvShowVisualsComponent} from './components/tv-shows/single-tv-show/tabset/tv-show-visuals/tv-show-visuals.component';
 import {TvShowTabsetService} from './_shared/services/tabset/tv-show-tabset.service';
-import { EmbedVideoComponent } from './_shared/utils/embed-video/embed-video.component';
 const APP_COMPONENTS = [
   HomeComponent,
   NotFoundComponent,
@@ -56,7 +58,15 @@ const APP_COMPONENTS = [
   MoviesComponent,
   SingleMovieComponent,
   TVShowsComponent,
-  SingleTVShowComponent
+  SingleTVShowComponent,
+  TvShowDetailComponent,
+  TvShowCastingComponent,
+  TvShowReviewComponent,
+  TvShowRecommendationComponent,
+  TvShowSimilarComponent,
+  TvShowTerritorialComponent,
+  TvShowVideosComponent,
+  TvShowVisualsComponent
 ];
 
 @NgModule({
@@ -66,16 +76,7 @@ const APP_COMPONENTS = [
     ...APP_COMPONENTS,
     ...APP_SHARED_COMPONENTS,
     SinglePersonComponent,
-    TabsetComponent,
-    TvShowDetailComponent,
-    TvShowCastingComponent,
-    TvShowReviewComponent,
-    TvShowRecommendationComponent,
-    TvShowSimilarComponent,
-    TvShowTerritorialComponent,
-    TvShowVideosComponent,
-    TvShowVisualsComponent,
-    EmbedVideoComponent
+    TabsetComponent
   ],
   imports: [
     BrowserModule,

@@ -18,13 +18,16 @@ export class TvShowVideosComponent implements OnInit {
   private loadingComponent: boolean;
 
   private videos$: Observable<Video>;
-
-  private firstInList: VideoResult;
+  private onAir: VideoResult;
 
   constructor(private tvShowHttpService: TvShowHttpService, private accessId: AccessIdService) {
   }
 
   public ngOnInit() {
+    const tag = document.createElement('script');
+    tag.src = 'https://www.youtube.com/iframe_api';
+    document.body.appendChild(tag);
+
     this.getVideos();
   }
 
@@ -35,11 +38,32 @@ export class TvShowVideosComponent implements OnInit {
 
     this.videos$ = this.tvShowHttpService.getVideosTVShow(this.id);
     this.videos$.subscribe(
-      data => this.firstInList = data.results[0],
+      data => this.onAir = data.results[0],
       err => console.log(err),
-      () => console.log(this.firstInList)
+      () => console.log(this.onAir.key)
     );
   }
 
+  private change(userChoice) {
+    this.onAir = userChoice;
+  }
+
+  private getTag(type): string {
+    if (type === 'Trailer' || type === 'Featurette') {
+      return 'badge badge-primary';
+    }
+
+    if (type === 'Clip' || type === 'Teaser') {
+      return 'badge badge-danger';
+    }
+
+    if (type === 'Opening Credits' || type === 'Behind the scene' || type === 'Bloopers') {
+      return 'badge badge-info';
+    }
+  }
+
+  private quality(suggestion): string {
+    return (typeof suggestion === 'number') ? 'hd' + suggestion : 'default';
+  }
 
 }
