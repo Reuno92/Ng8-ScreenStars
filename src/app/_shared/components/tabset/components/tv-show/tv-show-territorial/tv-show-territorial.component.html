@@ -1,1 +1,40 @@
-<p>tv-show-territorial works!</p>
+<ng-container *ngIf="results; then complete; else empty"></ng-container>
+
+<ng-template #empty>
+  <ngb-alert [type]="'danger'">we are nothing to propose !</ngb-alert>
+</ng-template>
+
+<ng-template #complete>
+  <table class="table table-striped text-white">
+    <thead>
+    <tr>
+      <th>Country</th>
+      <th>Language</th>
+      <th>Name</th>
+      <th>Overview</th>
+      <th>Rating</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr *ngFor="let item of results.translations">
+      <td>{{ item?.iso_3166_1}}</td>
+      <td>{{ item.english_name}}</td>
+      <td>
+        <ng-container *ngIf="item?.data.name; then hasName else emptyName">
+        </ng-container>
+        <ng-template #hasName>
+          {{ item?.data.name }}
+        </ng-template>
+        <ng-template #emptyName>
+          N/D
+        </ng-template>
+      </td>
+      <td>{{ item?.data.overview }}</td>
+      <td>
+      </td>
+    </tr>
+    </tbody>
+
+  </table>
+</ng-template>
+

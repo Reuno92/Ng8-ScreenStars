@@ -21,10 +21,9 @@ export class TvShowTerritorialComponent implements OnInit, OnDestroy {
 
   contentRating$: Observable<Rating>;
   translations$: Observable<Translation>;
-  results$: Territorial;
+  results: Territorial;
 
   territorial$: Subscription;
-
 
   constructor(
     private tvShowHttpService: TvShowHttpService,
@@ -52,9 +51,9 @@ export class TvShowTerritorialComponent implements OnInit, OnDestroy {
     this.territorial$ = forkJoin([this.contentRating$, this.translations$]).pipe(
       catchError( val => of(val))
     ).subscribe(
-      (data) => this.results$ = data,
+      (data) => this.results = { id: data[0].id, ratings: data[0].results, translations: data[1].translations },
       (err: HttpErrorResponse) => this.error = err,
-      () => this.loadingComponent = false
+      () => { this.loadingComponent = false; console.log(this.results) }
     )
   }
 
