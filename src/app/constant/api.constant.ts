@@ -10,7 +10,8 @@ const TOKEN_V4 = 'eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiJkZWNiYzNlOWJlMDFiZWQxMDQwZjc5M
   size: see configuration for each type of images
   https://image.tmdb.org/t/p/original//tpFpsqbleCzEE2p5EgvUq6ozfCA.png
 */
-export const IMAGES_HOST = `https://image.tmdb.org/t/p/`;
+export const IMAGES_HOST_SECURE = `https://image.tmdb.org/t/p/`;
+export const IMAGES_HOST = `http://image.tmdb.org/t/p/`;
 
 // request id required at end of this endpoint
 const COMPANIES = `${HOST}3/company/`;

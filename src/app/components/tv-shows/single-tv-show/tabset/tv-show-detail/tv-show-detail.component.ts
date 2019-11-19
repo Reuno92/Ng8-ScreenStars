@@ -3,9 +3,9 @@ import {HttpErrorResponse} from '@angular/common/http';
 import {TvShowHttpService} from '../../../../../_shared/services/http/tv-show-http.service';
 import {ActivatedRoute, ParamMap, Params} from '@angular/router';
 import {Observable, pipe} from 'rxjs';
-import {IMAGES_HOST} from '../../../../../constant/api.constant';
+import {IMAGES_HOST_SECURE} from '../../../../../constant/api.constant';
 import {map, switchMap, take} from 'rxjs/operators';
-import {TV} from '../../../../../_shared/models/TV';
+import {Tv} from '../../../../../_shared/models/TV';
 
 @Component({
   selector: 'app-detail',
@@ -16,11 +16,11 @@ export class TvShowDetailComponent implements OnInit {
 
   public id: string;
 
-  public tvShow$: Observable<TV>;
+  public tvShow$: Observable<Tv>;
   public error: HttpErrorResponse;
   public loadingTvShow: boolean;
 
-  public imagesLinks = IMAGES_HOST;
+  public imagesLinks = IMAGES_HOST_SECURE;
   public loadingComponent: boolean;
 
   constructor(private route: ActivatedRoute,

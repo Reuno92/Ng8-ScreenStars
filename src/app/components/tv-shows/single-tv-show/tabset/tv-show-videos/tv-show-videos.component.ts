@@ -32,6 +32,7 @@ export class TvShowVideosComponent implements OnInit {
   }
 
   private getVideos() {
+    this.loadingComponent = true;
     this.accessId.getId();
     this.id = this.accessId.id;
     this.error = this.accessId.error;
@@ -40,7 +41,7 @@ export class TvShowVideosComponent implements OnInit {
     this.videos$.subscribe(
       data => this.onAir = data.results[0],
       err => console.log(err),
-      () => console.log(this.onAir.key)
+      () => this.loadingComponent = false
     );
   }
 

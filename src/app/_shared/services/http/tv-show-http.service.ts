@@ -2,7 +2,7 @@ import {Injectable} from '@angular/core';
 import {HttpClient, HttpHeaders} from '@angular/common/http';
 import {Observable} from 'rxjs';
 import {TVSHOW_SUFFIX, TVSHOWS_SUFFIX} from '../../../constant/api.constant';
-import {Credit, Rating, Recommendation, Review, Similar, Translation, TV, Video} from '../../models/TV';
+import {Credit, Images, Rating, Recommendation, Review, Similar, Translation, Tv, Video} from '../../models/TV';
 import {PathHttpService} from '../../utils/path-http.service';
 
 @Injectable({
@@ -22,8 +22,8 @@ export class TvShowHttpService {
       {headers: new HttpHeaders(), responseType: 'json'});
   }
 
-  public getTVShow(id): Observable<TV> {
-    return this.http.get<TV>(this.getPathTvShow(id),
+  public getTVShow(id): Observable<Tv> {
+    return this.http.get<Tv>(this.getPathTvShow(id),
       {headers: new HttpHeaders(), responseType: 'json'});
   }
 
@@ -49,17 +49,22 @@ export class TvShowHttpService {
 
   public getContentTVShow(id): Observable<Rating> {
     return this.http.get<Rating>(this.getPathTvShow(id, TVSHOW_SUFFIX.content_rating),
-      {headers: new HttpHeaders(), responseType: 'json'})
+      {headers: new HttpHeaders(), responseType: 'json'});
   }
 
   public getTranslationsTVShow(id): Observable<Translation> {
     return this.http.get<Translation>(this.getPathTvShow(id, TVSHOW_SUFFIX.translations),
-      {headers: new HttpHeaders(), responseType: 'json'})
+      {headers: new HttpHeaders(), responseType: 'json'});
   }
 
   public getVideosTVShow(id): Observable<Video> {
     return this.http.get<Video>(this.getPathTvShow(id, TVSHOW_SUFFIX.videos),
-      {headers: new HttpHeaders(), responseType: 'json'})
+      {headers: new HttpHeaders(), responseType: 'json'});
+  }
+
+  public getImagesTvShow(id): Observable<Images> {
+    return this.http.get<Images>(this.getPathTvShow(id, TVSHOW_SUFFIX.images),
+      {headers: new HttpHeaders(), responseType: 'json'});
   }
 
   /**

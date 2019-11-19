@@ -4,7 +4,7 @@ import {TvShowHttpService} from '../../../../../_shared/services/http/tv-show-ht
 import {ActivatedRoute} from '@angular/router';
 import {Observable} from 'rxjs';
 import {Recommendation} from '../../../../../_shared/models/TV/Recommendation';
-import {IMAGES_HOST} from '../../../../../constant/api.constant';
+import {IMAGES_HOST_SECURE} from '../../../../../constant/api.constant';
 
 @Component({
   selector: 'app-tv-show-recommendation',
@@ -24,7 +24,7 @@ export class TvShowRecommendationComponent implements OnInit {
     private route: ActivatedRoute,
     private http: HttpClient,
     private tvService: TvShowHttpService) {
-    this.imagesLinks = IMAGES_HOST;
+    this.imagesLinks = IMAGES_HOST_SECURE;
   }
 
   ngOnInit() {

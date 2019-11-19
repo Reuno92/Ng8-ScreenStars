@@ -10,9 +10,9 @@ Link: https://trello.com/b/gDDKFSyC/screenstars
 
  Navigation
   - Movies
-  - TV Shows
-  - TV Seasons
-  - TV episodes
+  - Tv Shows
+  - Tv Seasons
+  - Tv episodes
   - Persons
   
   - Languages EN and EN

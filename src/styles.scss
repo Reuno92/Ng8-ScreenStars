@@ -1,6 +1,10 @@
 /* You can add global styles to this file, and also import other style files */
 @import '~bootstrap/scss/bootstrap-grid';
 
+html {
+  scroll-behavior: smooth;
+}
+
 body {
   background-color: #343a40;
   color: white;
@@ -41,6 +45,8 @@ input.form-control {
   height: 85vh;
 }
 
+
+// Card columns by defaults
 .card-columns {
   @include media-breakpoint-only(xs) {
     column-count: 1;
@@ -59,5 +65,29 @@ input.form-control {
   }
   @include media-breakpoint-only(xl) {
     column-count: 5;
+  }
+}
+
+.images {
+
+  & .card-columns {
+    @include media-breakpoint-only(xs) {
+      column-count: 1;
+    }
+
+    @include media-breakpoint-only(sm) {
+      column-count: 2;
+    }
+
+    @include media-breakpoint-only(md) {
+      column-count: 3;
+    }
+
+    @include media-breakpoint-only(lg) {
+      column-count: 4;
+    }
+    @include media-breakpoint-only(xl) {
+      column-count: 4;
+    }
   }
 }

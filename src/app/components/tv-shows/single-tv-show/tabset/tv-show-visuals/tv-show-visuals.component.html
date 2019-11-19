@@ -1,1 +1,70 @@
-<p>tv-show-visuals works!</p>
+<div class="container images">
+  <h2>Backdrop</h2>
+  <section class="card-columns">
+    <div class="card bg-secondary" *ngFor="let item of (images$|async)?.backdrops">
+      <img [src]="this.imagesLinksSecure + 'w780' + item?.file_path"
+           [alt]="'Backdrop-'+item?.file_path.slice(1, -4)+'-'+item?.width+'x'+item?.height+'-size-w780'"
+           class="card-img-top">
+      <div class="card-body">
+        <span *ngIf="item?.iso_639_1"><i class="badge badge-danger">{{ item?.iso_639_1 }}</i> only</span>
+        <p>Original Size: {{ item?.width }} x {{ item?.height }}</p>
+        <p>Vote <b>{{ item?.vote_average| number: '0.1-1' }}</b> Count <b>{{item?.vote_count}}</b></p>
+      </div>
+      <footer class="card-footer">
+        <h3>Downloads</h3>
+        <small>Width dimension</small>
+        <div role="group" class="btn-group w-100">
+          <a *ngFor="let size of backdropSizes|slice:0:-1"
+             class="btn btn-sm btn-outline-primary text-white"
+             href="{{this.imagesLinksSecure}}{{size}}{{item?.file_path}}"
+             target="_blank"
+             [download]="'Backdrop_'+
+             item?.file_path.slice(1, item?.file_path.length - 3)+item?.width+'x'+item?.height+size">
+            {{ size|slice:1:size.length }}px
+          </a>
+        </div>
+        <a class="btn btn-block btn-primary mt-3"
+           href="{{this.imagesLinksSecure}}original{{item?.file_path}}"
+           target="_blank"
+           [download]="'Backdrop_'+
+             item?.file_path.slice(1, item?.file_path.length - 3)+item?.width+'x'+item?.height+'sizeOriginal'">
+          Original
+        </a>
+      </footer>
+    </div>
+  </section>
+  <h2>Poster</h2>
+  <section class="card-columns">
+    <div class="card bg-secondary" *ngFor="let item of (images$|async)?.posters">
+      <img [src]="this.imagesLinksSecure + 'w780' + item?.file_path"
+           [alt]="'Backdrop_'+item?.file_path.slice(1, item?.file_path.length - 3)+item?.width+'x'+item?.height"
+           class="card-img-top">
+      <div class="card-body">
+        <span *ngIf="item?.iso_639_1"><i class="badge badge-danger">{{ item?.iso_639_1 }}</i> only</span>
+        <p>Original Size: {{ item?.width }} x {{ item?.height }}</p>
+        <p>Vote <b>{{ item?.vote_average | number:'0.1-1' }}</b> Count <b>{{item?.vote_count}}</b></p>
+      </div>
+      <footer class="card-footer">
+        <h3>Downloads</h3>
+        <small>Width dimension</small>
+        <div role="group" class="btn-group w-100 flex-wrap">
+          <a *ngFor="let size of posterSizes|slice:0:-1"
+             class="btn btn-sm btn-outline-primary text-white"
+             href="{{this.imagesLinksSecure}}{{size}}{{item?.file_path}}"
+             target="_blank"
+             [download]="'Backdrop_'+
+             item?.file_path.slice(1, item?.file_path.length - 3)+item?.width+'x'+item?.height+size">
+            {{ size|slice:1:size.length }}px
+          </a>
+        </div>
+        <a class="btn btn-block btn-primary mt-3"
+           href="{{this.imagesLinksSecure}}original{{item?.file_path}}"
+           target="_blank"
+           [download]="'Backdrop_'+
+             item?.file_path.slice(1, item?.file_path.length - 3)+item?.width+'x'+item?.height+'sizeOriginal'">
+          Original
+        </a>
+      </footer>
+    </div>
+  </section>
+</div>

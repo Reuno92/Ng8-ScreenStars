@@ -1,6 +1,6 @@
 import {AfterContentChecked, Component, Input, OnInit} from '@angular/core';
 import {Observable} from 'rxjs';
-import {IMAGES_HOST} from '../../../constant/api.constant';
+import {IMAGES_HOST_SECURE} from '../../../constant/api.constant';
 
 @Component({
   selector: 'app-card-columns',
@@ -15,7 +15,7 @@ export class CardColumnsComponent implements OnInit, AfterContentChecked {
   public imageLinks: string;
 
   public constructor() {
-    this.imageLinks = IMAGES_HOST;
+    this.imageLinks = IMAGES_HOST_SECURE;
   }
 
   public ngOnInit() {}

@@ -4,7 +4,7 @@ import {TvShowHttpService} from '../../../../../_shared/services/http/tv-show-ht
 import {ActivatedRoute} from '@angular/router';
 import {Observable} from 'rxjs';
 import {Similar} from '../../../../../_shared/models/TV';
-import {IMAGES_HOST} from '../../../../../constant/api.constant';
+import {IMAGES_HOST_SECURE} from '../../../../../constant/api.constant';
 
 @Component({
   selector: 'app-tv-show-similar',
@@ -21,7 +21,7 @@ export class TvShowSimilarComponent implements OnInit {
   private imagesLinks: string;
 
   constructor(private tvShowHttpService: TvShowHttpService, private route: ActivatedRoute) {
-    this.imagesLinks = IMAGES_HOST;
+    this.imagesLinks = IMAGES_HOST_SECURE;
     this.loadingComponent = false;
   }
 

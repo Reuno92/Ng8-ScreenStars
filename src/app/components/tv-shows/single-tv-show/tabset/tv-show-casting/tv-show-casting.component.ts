@@ -3,7 +3,7 @@ import {HttpErrorResponse} from '@angular/common/http';
 import {TvShowHttpService} from '../../../../../_shared/services/http/tv-show-http.service';
 import {Observable} from 'rxjs';
 import {ActivatedRoute} from '@angular/router';
-import {IMAGES_HOST} from '../../../../../constant/api.constant';
+import {IMAGES_HOST_SECURE} from '../../../../../constant/api.constant';
 import {Credit} from '../../../../../_shared/models/TV';
 
 @Component({
@@ -25,7 +25,7 @@ export class TvShowCastingComponent implements OnInit {
 
   public constructor(private tvService: TvShowHttpService,
                      private route: ActivatedRoute) {
-    this.imagesLinks = IMAGES_HOST;
+    this.imagesLinks = IMAGES_HOST_SECURE;
   }
 
   public ngOnInit(): void {
