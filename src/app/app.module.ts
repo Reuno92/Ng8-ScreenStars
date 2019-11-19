@@ -51,6 +51,8 @@ import {TvShowTerritorialComponent} from './components/tv-shows/single-tv-show/t
 import {TvShowVideosComponent} from './components/tv-shows/single-tv-show/tabset/tv-show-videos/tv-show-videos.component';
 import {TvShowVisualsComponent} from './components/tv-shows/single-tv-show/tabset/tv-show-visuals/tv-show-visuals.component';
 import {TvShowTabsetService} from './_shared/services/tabset/tv-show-tabset.service';
+import {SingleSeasonComponent} from './components/tv-shows/single-season/single-season.component';
+import {SingleEpisodeComponent} from './components/tv-shows/single-episode/single-episode.component';
 const APP_COMPONENTS = [
   HomeComponent,
   NotFoundComponent,
@@ -76,7 +78,9 @@ const APP_COMPONENTS = [
     ...APP_COMPONENTS,
     ...APP_SHARED_COMPONENTS,
     SinglePersonComponent,
-    TabsetComponent
+    TabsetComponent,
+    SingleSeasonComponent,
+    SingleEpisodeComponent
   ],
   imports: [
     BrowserModule,

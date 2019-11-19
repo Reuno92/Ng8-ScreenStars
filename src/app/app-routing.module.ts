@@ -22,6 +22,8 @@ import {TvShowSimilarComponent} from './components/tv-shows/single-tv-show/tabse
 import {TvShowTerritorialComponent} from './components/tv-shows/single-tv-show/tabset/tv-show-territorial/tv-show-territorial.component';
 import {TvShowVideosComponent} from './components/tv-shows/single-tv-show/tabset/tv-show-videos/tv-show-videos.component';
 import {TvShowVisualsComponent} from './components/tv-shows/single-tv-show/tabset/tv-show-visuals/tv-show-visuals.component';
+import {SingleSeasonComponent} from './components/tv-shows/single-season/single-season.component';
+import {SingleEpisodeComponent} from './components/tv-shows/single-episode/single-episode.component';
 
 export const routes: Routes = [
   {
@@ -94,6 +96,16 @@ export const routes: Routes = [
               {
                 path: 'visuals',
                 component: TvShowVisualsComponent
+              },
+              {
+                path: 'season/:seasonNumber',
+                component: SingleSeasonComponent,
+                children: [
+                  {
+                    path: 'episode/:episodeNumber',
+                    component: SingleEpisodeComponent
+                  }
+                ]
               }
             ]
           },
