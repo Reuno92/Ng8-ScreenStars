@@ -2,7 +2,7 @@ import {Injectable} from '@angular/core';
 import {HttpClient, HttpHeaders} from '@angular/common/http';
 import {Observable} from 'rxjs';
 import {TVSHOW_SUFFIX, TVSHOWS_SUFFIX} from '../../../constant/api.constant';
-import {Credit, Images, Rating, Recommendation, Review, Similar, Translation, Tv, Video} from '../../models/TV';
+import {Credit, Images, Rating, Recommendation, Review, Similar, Translation, TV, Video} from '../../models/TV';
 import {PathHttpService} from '../../utils/path-http.service';
 
 @Injectable({
@@ -22,8 +22,8 @@ export class TvShowHttpService {
       {headers: new HttpHeaders(), responseType: 'json'});
   }
 
-  public getTVShow(id): Observable<Tv> {
-    return this.http.get<Tv>(this.getPathTvShow(id),
+  public getTVShow(id): Observable<TV> {
+    return this.http.get<TV>(this.getPathTvShow(id),
       {headers: new HttpHeaders(), responseType: 'json'});
   }
 

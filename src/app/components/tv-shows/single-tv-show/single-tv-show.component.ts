@@ -6,7 +6,7 @@ import {HttpErrorResponse} from '@angular/common/http';
 import {IMAGES_HOST_SECURE} from '../../../constant/api.constant';
 import {TvShowTabsetService} from '../../../_shared/services/tabset/tv-show-tabset.service';
 import {Tabset} from '../../../_shared/models/tabset';
-import {Tv} from '../../../_shared/models/TV/Tv';
+import {TV} from '../../../_shared/models/TV';
 
 @Component({
   selector: 'app-single-tv-show',
@@ -16,7 +16,7 @@ import {Tv} from '../../../_shared/models/TV/Tv';
 export class SingleTVShowComponent implements OnInit {
 
   public id: string = this.route.snapshot.paramMap.get('id');
-  public tvShow$: Observable<Tv>;
+  public tvShow$: Observable<TV>;
   public loadingTvShow: boolean;
   public error: HttpErrorResponse;
   public imagesLinks: string;

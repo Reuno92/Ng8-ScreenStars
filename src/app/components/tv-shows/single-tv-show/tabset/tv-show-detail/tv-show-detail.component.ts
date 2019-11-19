@@ -5,7 +5,7 @@ import {ActivatedRoute, ParamMap, Params} from '@angular/router';
 import {Observable, pipe} from 'rxjs';
 import {IMAGES_HOST_SECURE} from '../../../../../constant/api.constant';
 import {map, switchMap, take} from 'rxjs/operators';
-import {Tv} from '../../../../../_shared/models/TV';
+import {TV} from '../../../../../_shared/models/TV';
 
 @Component({
   selector: 'app-detail',
@@ -16,7 +16,7 @@ export class TvShowDetailComponent implements OnInit {
 
   public id: string;
 
-  public tvShow$: Observable<Tv>;
+  public tvShow$: Observable<TV>;
   public error: HttpErrorResponse;
   public loadingTvShow: boolean;
 

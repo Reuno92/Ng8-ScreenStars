@@ -1,6 +1,6 @@
 import {ListRef} from '../refList';
 
-export class Tv {
+export class TV {
   constructor(
     public backdrop_path?: string | null,
     public created_by ?: Array<Created>,
