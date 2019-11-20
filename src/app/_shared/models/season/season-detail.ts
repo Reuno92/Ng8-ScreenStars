@@ -8,9 +8,9 @@ export class SeasonDetail {
     public episodes?: Array<SeasonResult>,
     public name?: string,
     public overview?: string,
-    public id: string,
-    public poster_path: string,
-    public season_number: string,
+    public id?: string,
+    public poster_path?: string,
+    public season_number?: string,
   ) {
   }
 }
