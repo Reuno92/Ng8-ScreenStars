@@ -26,7 +26,8 @@
           <ng-template #normal>{{ items?.overview }}</ng-template>
         </main>
         <footer class="card-footer fixed-bottom">
-          Country: {{ items?.origin_country }} | Original Language: {{ items?.original_language }}
+          Country: {{ items?.origin_country | replaceBy:this.countries:'ISO3166-1-Alpha-2': 'official_name_en' }} |
+          Original Language: {{ items?.original_language | replaceBy:this.languages:'alpha2':'English' }}
         </footer>
       </div>
     </div>

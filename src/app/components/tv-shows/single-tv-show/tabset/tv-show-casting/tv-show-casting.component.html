@@ -3,9 +3,13 @@
   <div class="row">
     <div class="col-12 col-sm-6 col-md-3 col-lg-2" *ngFor="let cast of (this.tvShowCasting$|async)?.cast">
       <div class="card card-cast">
-        <img class="card-img-top" [src]="this.imagesLinks + 'w185' + cast.profile_path" alt="">
+        <img class="card-img-top"
+             [src]="this.imagesLinks + 'w185' + cast.profile_path"
+             src-fallback="{{ missingPlaceholder }}"
+             alt="{{ cast.name }}'s photo">
         <div class="card-body">
-          <p><b>{{ cast.name }}</b> {{ getGender(cast.gender) }} <br>as {{ cast.character }}</p>
+          <p><b>{{ cast.name }} </b> <i [ngClass]="'fa fa-'+getGender(cast.gender)" aria-hidden="true"></i></p>
+          <p><small>as {{ cast.character }}</small></p>
         </div>
       </div>
     </div>
@@ -14,12 +18,16 @@
   <div class="row">
     <div class="col-12 col-sm-6 col-md-3 col-lg-2" *ngFor="let crew of (this.tvShowCasting$|async)?.crew">
       <div class="card card-cast">
-        <img class="card-img-top" [src]="this.imagesLinks + 'w185' + crew.profile_path" alt="">
+        <img class="card-img-top"
+             [src]="this.imagesLinks + 'w185' + crew.profile_path"
+             src-fallback="{{ missingPlaceholder }}"
+             alt="{{crew.name}}'s photo">
         <div class="card-body">
-          <p>
-            <b>{{ crew.name }}</b> {{ getGender(crew.gender) }} <br>
-            {{ crew.department }} - {{ crew.job }}
-          </p>
+          <p><b>{{crew.name}} </b><i [ngClass]="'fa fa-'+getGender(crew.gender)" aria-hidden="true"></i></p>
+          {{ crew.job }}
+        </div>
+        <div class="card-footer">
+          <small>{{ crew.department }}</small>
         </div>
       </div>
     </div>

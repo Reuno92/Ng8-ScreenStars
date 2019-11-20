@@ -22,10 +22,12 @@ export class TvShowCastingComponent implements OnInit {
   public tvShowCasting$: Observable<Credit>;
   public loadingCastingTvShow: boolean;
 
+  public missingPlaceholder: string;
 
   public constructor(private tvService: TvShowHttpService,
                      private route: ActivatedRoute) {
     this.imagesLinks = IMAGES_HOST_SECURE;
+    this.missingPlaceholder = 'assets/missing/person-missing_secondary.svg';
   }
 
   public ngOnInit(): void {
@@ -33,7 +35,7 @@ export class TvShowCastingComponent implements OnInit {
   }
 
   public getGender(int): string {
-    return (int === 2) ? 'Male' : 'Female';
+    return (int === 2) ? 'mars' : 'venus';
   }
 
   private getCreditsTVShow() {

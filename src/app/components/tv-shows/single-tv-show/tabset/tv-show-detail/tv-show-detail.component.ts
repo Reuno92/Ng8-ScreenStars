@@ -43,7 +43,6 @@ export class TvShowDetailComponent implements OnInit {
 
   public ngOnInit(): void {
     this.getTVShow();
-
   }
 
   private getTVShow() {

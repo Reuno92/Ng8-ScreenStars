@@ -45,7 +45,13 @@ input.form-control {
   height: 85vh;
 }
 
+.fa-venus {
+  color: #e83e8c;
+}
 
+.fa-mars {
+  color: #007bff;
+}
 // Card columns by defaults
 .card-columns {
   @include media-breakpoint-only(xs) {

@@ -3,8 +3,10 @@ import {HttpClient, HttpErrorResponse} from '@angular/common/http';
 import {TvShowHttpService} from '../../../../../_shared/services/http/tv-show-http.service';
 import {ActivatedRoute} from '@angular/router';
 import {Observable} from 'rxjs';
-import {Recommendation} from '../../../../../_shared/models/TV/Recommendation';
+import {Recommendation} from '../../../../../_shared/models/TV';
 import {IMAGES_HOST_SECURE} from '../../../../../constant/api.constant';
+import * as Countries from '../../../../../json/country-codes.json';
+import * as Lang from '../../../../../json/language-codes.json';
 
 @Component({
   selector: 'app-tv-show-recommendation',
@@ -17,6 +19,13 @@ export class TvShowRecommendationComponent implements OnInit {
   public error: HttpErrorResponse;
   private id: string;
 
+  /**
+   *  If don't assign (Alias as any).default
+   *  it's return undefined…
+   */
+  public countries: any;
+  public languages: any;
+
   public tvShowRecommendation: Observable<Recommendation>;
   public imagesLinks: string;
 
@@ -25,6 +34,8 @@ export class TvShowRecommendationComponent implements OnInit {
     private http: HttpClient,
     private tvService: TvShowHttpService) {
     this.imagesLinks = IMAGES_HOST_SECURE;
+    this.countries = (Countries as any).default;
+    this.languages = (Lang as any).default;
   }
 
   ngOnInit() {
