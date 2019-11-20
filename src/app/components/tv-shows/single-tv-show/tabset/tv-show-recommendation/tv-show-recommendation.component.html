@@ -20,7 +20,7 @@
             <span>First air Date: <b>{{ items?.first_air_date | date:'d/MM/yy' }}</b></span>
           </div>
         </header>
-        <main class="card-body ">
+        <main class="card-body">
           <ng-container *ngIf="items?.overview.length > 333; then short; else normal"></ng-container>
           <ng-template #short>{{ items?.overview | slice:0:333 }}...</ng-template>
           <ng-template #normal>{{ items?.overview }}</ng-template>
