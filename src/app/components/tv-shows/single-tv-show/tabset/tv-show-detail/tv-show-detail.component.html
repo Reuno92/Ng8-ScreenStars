@@ -62,8 +62,8 @@
                *ngFor="let season of (this.tvShow$ | async)?.seasons | slice:1:(this.tvShow$ | async)?.seasons.length">
             <img [src]="imagesLinks + 'w92' + season?.poster_path" [alt]="'poster of ' + (this.tvShow$ | async)?.name">
             <h3 class="h5">{{season?.name}}</h3>
-            <small class="font-italic">{{season?.episode_count}} episodes</small>
-            <p class="font-weight-lighter">{{ season?.air_date }}</p>
+            <p class="font-italic">{{season?.episode_count}} episodes</p>
+            <p><small>Started at <span class="font-weight-lighter">{{ season?.air_date }}</span></small></p>
           </div>
         </div>
 
@@ -74,8 +74,8 @@
           <div id="genres" class="col-12 col-md-4">
             <b>Genres</b>
             <div class="row">
-              <section class="col-12 col-md-9 d-flex justify-content-between"
-                       *ngFor="let genre of (this.tvShow$ | async)?.genres">
+              <section *ngFor="let genre of (this.tvShow$ | async)?.genres"
+                       class="col-12 d-flex justify-content-between">
                 <span class="badge badge-secondary align-self-center">{{ genre.name }}</span>
               </section>
             </div>
@@ -84,7 +84,7 @@
           <div id="countries" class="col-12 col-md-4">
             <b>Origin Country</b>
             <div class="row">
-              <div class="col-12 col-md-9 d-flex justify-content-between"
+              <div class="col-12 d-flex justify-content-between"
                    *ngFor="let country of (this.tvShow$ | async)?.origin_country
                    | replaceBy:this.countries:'ISO3166-1-Alpha-2': 'official_name_en' ">
                 {{ country }}
@@ -108,8 +108,10 @@
           <div class="row">
             <section class="col-12 col-md-3 d-flex justify-content-between align-items-center mt-3"
                      *ngFor="let creator of (this.tvShow$ | async)?.created_by">
-              <img [src]="imagesLinks + 'w45' + creator.profile_path" alt="">
-              <p>{{ creator.name}}</p>
+              <img [src]="imagesLinks + 'w45' + creator.profile_path"
+                   src-fallback="assets/missing/person-missing_secondary.svg"
+                   alt="{{ creator.name }}'s photo">
+              <p>{{ creator.name }}</p>
             </section>
           </div>
         </section>

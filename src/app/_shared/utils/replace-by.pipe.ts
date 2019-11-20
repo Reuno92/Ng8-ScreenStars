@@ -6,6 +6,7 @@ import {Pipe, PipeTransform} from '@angular/core';
 export class ReplaceByPipe implements PipeTransform {
 
   transform(startedValue: any, refList: any[], findTerm: string, targetTerm: string): any {
+
     // if value is defined else return value for another pass
     if (startedValue) {
       if (typeof startedValue !== 'string') {

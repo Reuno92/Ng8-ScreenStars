@@ -43,12 +43,14 @@ export class TvShowDetailComponent implements OnInit {
 
   public ngOnInit(): void {
     this.getTVShow();
+
   }
 
   private getTVShow() {
     this.loadingTvShow = true;
     this.getId();
     this.tvShow$ = this.tvService.getTVShow(this.id);
+    // this.tvShow$.subscribe( x => console.log('length of genres', x.origin_country.length));
   }
 
   private getId() {
