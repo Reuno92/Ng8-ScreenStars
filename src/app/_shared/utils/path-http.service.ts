@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import {KEY, TV_SHOW} from '../../constant/api.constant';
+import {KEY, TV_SHOW, SEASON, EPISODE, HOST} from '../../constant/api.constant';
 
 @Injectable({
   providedIn: 'root'
@@ -17,5 +17,13 @@ export class PathHttpService {
    */
   public getPathTvShow(id = '', suffix = '', prefix = '') {
     return TV_SHOW + '/' + prefix + id + suffix + KEY;
+  }
+
+  public getPathSeason(id, seasonNumber, suffix = '') {
+    return TV_SHOW + '/' + id + SEASON + '/' + seasonNumber + suffix + KEY;
+  }
+
+  public getPathEpisode(id = '', suffix = '', prefix = '') {
+    return EPISODE + '/' + prefix + id + suffix + KEY;
   }
 }

@@ -19,7 +19,7 @@ class Cast {
   ) {}
 }
 
-class Crew {
+export class Crew {
 
   constructor(
     public credit_id: string,

@@ -138,8 +138,8 @@ export const TVSHOWS_SUFFIX = {
   topRated: 'top_rated'
 };
 
-const SEASON = '/season'; // require a tv_id before
-const SEASON_SUFFIX = { // require a number of season before
+export const SEASON = '/season'; // require a tv_id before
+export const SEASON_SUFFIX = { // require a number of season before
   changes: '/changes',
   account_states: '/account_states',
   credits: '/credits',
@@ -148,8 +148,8 @@ const SEASON_SUFFIX = { // require a number of season before
   videos: '/videos',
 };
 
-const EPISODE = '/episode'; // require a number of season before and an episode number after
-const EPISODE_SUFFIX = {
+export const EPISODE = '/episode'; // require a number of season before and an episode number after
+export const EPISODE_SUFFIX = {
   changes: '/changes', // require an episode_id but with tv endpoint only like '/tv/episode/{episode_id}/'
   account_states: '/account_states',
   credits: '/credits',

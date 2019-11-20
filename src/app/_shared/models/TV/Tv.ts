@@ -42,7 +42,7 @@ class Created {
   ) {}
 }
 
-class Episode {
+export class Episode {
   constructor(
     public air_date?: string,
     public episode_number?: number,

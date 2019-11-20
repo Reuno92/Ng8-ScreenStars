@@ -17,8 +17,7 @@ import {SinglePersonComponent} from './components/person/single-person/single-pe
 import {TvShowDetailComponent} from './components/tv-shows/single-tv-show/tabset/tv-show-detail/tv-show-detail.component';
 import {TvShowCastingComponent} from './components/tv-shows/single-tv-show/tabset/tv-show-casting/tv-show-casting.component';
 import {TvShowReviewComponent} from './components/tv-shows/single-tv-show/tabset/tv-show-review/tv-show-review.component';
-import {TvShowRecommendationComponent}
-  from './components/tv-shows/single-tv-show/tabset/tv-show-recommendation/tv-show-recommendation.component';
+import {TvShowRecommendationComponent} from './components/tv-shows/single-tv-show/tabset/tv-show-recommendation/tv-show-recommendation.component';
 import {TvShowSimilarComponent} from './components/tv-shows/single-tv-show/tabset/tv-show-similar/tv-show-similar.component';
 import {TvShowTerritorialComponent} from './components/tv-shows/single-tv-show/tabset/tv-show-territorial/tv-show-territorial.component';
 import {TvShowVideosComponent} from './components/tv-shows/single-tv-show/tabset/tv-show-videos/tv-show-videos.component';
