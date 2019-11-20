@@ -12,7 +12,8 @@ import {ImgFallbackModule} from 'ngx-img-fallback';
 const THIRD_PARTY_MODULES = [
   NgbModule,
   YouTubePlayerModule,
-  ImgFallbackModule
+  ImgFallbackModule,
+  MomentModule
 ];
 
 // App Component
@@ -54,6 +55,7 @@ import {TvShowVisualsComponent} from './components/tv-shows/single-tv-show/tabse
 import {CommonTabsetService} from './_shared/services/tabset/common-tabset.service';
 import {SingleSeasonComponent} from './components/tv-shows/single-season/single-season.component';
 import {SingleEpisodeComponent} from './components/tv-shows/single-episode/single-episode.component';
+import {MomentModule} from 'ngx-moment';
 const APP_COMPONENTS = [
   HomeComponent,
   NotFoundComponent,

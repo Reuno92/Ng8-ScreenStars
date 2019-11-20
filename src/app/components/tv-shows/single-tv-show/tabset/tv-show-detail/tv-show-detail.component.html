@@ -14,25 +14,33 @@
       <div class="scores-dates col-12 pt-2 pb-1 mb-2">
         <div class="d-flex justify-content-around align-middle">
 
-          <p class="mb-0">Vote average
-            <b class="">{{ (this.tvShow$ | async)?.vote_average }}</b>
-          </p>
+          <div class="mb-0 text-center">
+            <b class="h4">{{ (this.tvShow$ | async)?.vote_average }}</b>
+            <p class="mt-4">Vote average
+            <p>
+          </div>
 
-          <p class="mb-0">Vote count
-            <b class="">{{ (this.tvShow$ | async)?.vote_count }}</b>
-          </p>
+          <div class="mb-0 Text-center">
+            <b class="h4">{{ (this.tvShow$ | async)?.vote_count }}</b>
+            <p class="mt-4">Vote count</p>
+          </div>
 
-          <p class="mb-0">Popularity score
-            <b class="">{{ (this.tvShow$ | async)?.popularity }}</b>
-          </p>
+          <div class="mb-0 text-center">
+            <b class="h4">{{ (this.tvShow$ | async)?.popularity | number:'0.1-2' }}</b>
+            <p class="mt-4">Popularity score</p>
+          </div>
 
-          <p class="mb-0">First air date
-            <b>{{ (this.tvShow$ | async)?.first_air_date | date: 'd/MM/y' }}</b>
-          </p>
+          <div class="mb-0 text-center">
+            <p class="h4">{{ (this.tvShow$ | async)?.first_air_date | date: 'd/MM/y' }}</p>
+            <small>{{ (this.tvShow$ | async)?.first_air_date | amTimeAgo }}</small>
+            <p>First air date</p>
+          </div>
 
-          <p class="mb-0">Last air date
-            <b>{{ (this.tvShow$ | async)?.last_air_date | date:'d/MM/y' }}</b>
-          </p>
+          <div class="mb-0 text-center">
+            <p class="h4">{{ (this.tvShow$ | async)?.last_air_date | date:'d/MM/y' }}</p>
+            <small>{{ (this.tvShow$ | async)?.last_air_date | amTimeAgo  }}</small>
+            <p>Last air date</p>
+          </div>
         </div>
       </div>
 
@@ -123,7 +131,8 @@
               'background-image': 'url(' + this.imagesLinks + 'original' + (this.tvShow$| async)?.last_episode_to_air.still_path + ')',
               'background-size' : 'cover' }">
                 <div class="card-header">
-                  <b>Last episode</b> - <small>{{(this.tvShow$| async)?.last_episode_to_air.air_date}}</small>
+                  <b>Last episode</b> -
+                  <small>{{(this.tvShow$| async)?.last_episode_to_air.air_date | amTimeAgo}}</small>
                 </div>
                 <div class="card-body">
                   <h3>[S{{ (this.tvShow$| async)?.last_episode_to_air.season_number }}

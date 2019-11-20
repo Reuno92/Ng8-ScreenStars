@@ -39,6 +39,7 @@ export class TvShowDetailComponent implements OnInit {
     this.loadingTvShow = true;
     this.getId();
     this.tvShow$ = this.tvService.getTVShow(this.id);
+    this.tvShow$.subscribe(x => console.log(x));
   }
 
   private getId() {
