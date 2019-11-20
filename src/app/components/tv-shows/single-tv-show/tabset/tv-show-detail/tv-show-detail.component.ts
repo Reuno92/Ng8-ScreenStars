@@ -49,8 +49,4 @@ export class TvShowDetailComponent implements OnInit {
       () => this.loadingComponent = false
     );
   }
-
-  private onImageLoad() {
-
-  }
 }

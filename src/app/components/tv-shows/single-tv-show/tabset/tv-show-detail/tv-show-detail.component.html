@@ -18,21 +18,17 @@
             <b class="">{{ (this.tvShow$ | async)?.vote_average }}</b>
           </p>
 
-
           <p class="mb-0">Vote count
             <b class="">{{ (this.tvShow$ | async)?.vote_count }}</b>
           </p>
-
 
           <p class="mb-0">Popularity score
             <b class="">{{ (this.tvShow$ | async)?.popularity }}</b>
           </p>
 
-
           <p class="mb-0">First air date
             <b>{{ (this.tvShow$ | async)?.first_air_date | date: 'd/MM/y' }}</b>
           </p>
-
 
           <p class="mb-0">Last air date
             <b>{{ (this.tvShow$ | async)?.last_air_date | date:'d/MM/y' }}</b>
@@ -108,7 +104,8 @@
 
             <div class="col-12 col-md-3 text-center"
                  *ngFor="let company of (this.tvShow$ | async)?.production_companies">
-              <img height="153" [src]="imagesLinks + 'w92' + company.logo_path" src-fallback="{{ missingPlaceholder }}"
+              <img height="153" [src]="imagesLinks + 'w92' + company.logo_path"
+                   src-fallback="{{ missingPlaceholder }}"
                    alt="Logo {{ company.name }}">
               <ng-container *ngIf="company.origin_country; then origin; else isNull"></ng-container>
               <ng-template #origin>
@@ -121,59 +118,63 @@
           </section>
 
           <div class="row">
-            <section class="col-12" *ngIf="this.tvShow$.last_episode_to_air">
+            <section class="col-12" *ngIf="(this.tvShow$| async)?.last_episode_to_air !== null">
               <div class="card episode-card" [ngStyle]="{
-              'background-image': 'url(' + this.imagesLinks + 'original' + this.tvShow$.last_episode_to_air.still_path + ')',
+              'background-image': 'url(' + this.imagesLinks + 'original' + (this.tvShow$| async)?.last_episode_to_air.still_path + ')',
               'background-size' : 'cover' }">
                 <div class="card-header">
-                  <b>Last episode</b> - <small>{{tvShow$?.last_episode_to_air.air_date}}</small>
+                  <b>Last episode</b> - <small>{{(this.tvShow$| async)?.last_episode_to_air.air_date}}</small>
                 </div>
                 <div class="card-body">
-                  <h3>[S{{ tvShow$?.last_episode_to_air.season_number }}
-                    ep. {{ tvShow$?.last_episode_to_air.episode_number }}] {{ tvShow$?.last_episode_to_air.name }}</h3>
+                  <h3>[S{{ (this.tvShow$| async)?.last_episode_to_air.season_number }}
+                    ep. {{ (this.tvShow$| async)?.last_episode_to_air.episode_number }}
+                    ] {{ (this.tvShow$| async)?.last_episode_to_air.name }}</h3>
 
-                  <p>{{tvShow$?.last_episode_to_air.overview}}</p>
+                  <p>{{(this.tvShow$| async)?.last_episode_to_air.overview}}</p>
                 </div>
                 <div class="card-footer">
                   <section class="row">
                     <div class="col-12 col-md-2">
-                      <b class="h2">{{tvShow$?.last_episode_to_air.vote_count}}</b>
+                      <b class="h2">{{(this.tvShow$| async)?.last_episode_to_air.vote_count}}</b>
                       <p>Vote count</p>
                     </div>
                     <div class="col-12 col-md-3">
-                      <b class="h2">{{tvShow$?.last_episode_to_air.vote_average}}</b>
+                      <b class="h2">{{(this.tvShow$| async)?.last_episode_to_air.vote_average}}</b>
                       <p>Vote average</p>
                     </div>
                   </section>
                 </div>
               </div>
             </section>
-            <section class="col-12" *ngIf="this.tvShow$.next_episode_to_air">
+
+            <section class="col-12" *ngIf="(this.tvShow$| async)?.next_episode_to_air !== null">
               <div class="card episode-card" [ngStyle]="{
-              'background-image': 'url(' + this.imagesLinks + 'original' + this.tvShow$.next_episode_to_air.still_path + ')',
+              'background-image': 'url(' + this.imagesLinks + 'original' + (this.tvShow$| async)?.next_episode_to_air.still_path + ')',
               'background-size' : 'cover' }">
                 <div class="card-header">
-                  <b>Last episode</b> - <small>{{tvShow$?.next_episode_to_air.air_date}}</small>
+                  <b>Last episode</b> - <small>{{(this.tvShow$| async)?.next_episode_to_air.air_date}}</small>
                 </div>
                 <div class="card-body">
-                  <h3>[S{{ tvShow$?.next_episode_to_air.season_number }}
-                    ep. {{ tvShow$?.next_episode_to_air.episode_number }}] {{ tvShow$?.next_episode_to_air.name }}</h3>
-                  <p>{{tvShow$?.next_episode_to_air.overview}}</p>
+                  <h3>[S{{ (this.tvShow$| async)?.next_episode_to_air.season_number }}
+                    ep. {{ (this.tvShow$| async)?.next_episode_to_air.episode_number }}
+                    ] {{ (this.tvShow$| async)?.next_episode_to_air.name }}</h3>
+                  <p>{{(this.tvShow$| async)?.next_episode_to_air.overview}}</p>
                 </div>
                 <div class="card-footer">
                   <section class="row">
                     <div class="col-12 col-md-2">
-                      <b class="h2">{{tvShow$?.next_episode_to_air.vote_count}}</b>
+                      <b class="h2">{{(this.tvShow$| async)?.next_episode_to_air.vote_count}}</b>
                       <p>Vote count</p>
                     </div>
                     <div class="col-12 col-md-3">
-                      <b class="h2">{{tvShow$?.next_episode_to_air.vote_average}}</b>
+                      <b class="h2">{{(this.tvShow$| async)?.next_episode_to_air.vote_average}}</b>
                       <p>Vote average</p>
                     </div>
                   </section>
                 </div>
               </div>
             </section>
+
           </div>
         </section>
       </div>
