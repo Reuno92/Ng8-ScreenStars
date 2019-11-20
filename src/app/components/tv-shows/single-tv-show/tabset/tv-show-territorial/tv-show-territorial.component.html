@@ -17,7 +17,7 @@
     </thead>
     <tbody>
     <tr *ngFor="let item of results.translations">
-      <td>{{ item?.iso_3166_1}}</td>
+      <td>{{ item?.iso_3166_1 | replaceBy:this.countries:'ISO3166-1-Alpha-2': 'official_name_en'}}</td>
       <td>{{ item.english_name}}</td>
       <td>
         <ng-container *ngIf="item?.data.name; then hasName else emptyName">

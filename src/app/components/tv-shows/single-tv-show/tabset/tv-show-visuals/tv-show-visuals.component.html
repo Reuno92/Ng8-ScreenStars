@@ -6,7 +6,9 @@
            [alt]="'Backdrop-'+item?.file_path.slice(1, -4)+'-'+item?.width+'x'+item?.height+'-size-w780'"
            class="card-img-top">
       <div class="card-body">
-        <span *ngIf="item?.iso_639_1"><i class="badge badge-danger">{{ item?.iso_639_1 }}</i> only</span>
+        <span *ngIf="item?.iso_639_1">
+          <i class="badge badge-light">{{ item?.iso_639_1 | replaceBy:language:'alpha2':'English' }} version</i>
+        </span>
         <p>Original Size: {{ item?.width }} x {{ item?.height }}</p>
         <p>Vote <b>{{ item?.vote_average| number: '0.1-1' }}</b> Count <b>{{item?.vote_count}}</b></p>
       </div>
@@ -40,7 +42,9 @@
            [alt]="'Backdrop_'+item?.file_path.slice(1, item?.file_path.length - 3)+item?.width+'x'+item?.height"
            class="card-img-top">
       <div class="card-body">
-        <span *ngIf="item?.iso_639_1"><i class="badge badge-danger">{{ item?.iso_639_1 }}</i> only</span>
+        <span *ngIf="item?.iso_639_1">
+          <i class="badge badge-light">{{ item?.iso_639_1 | replaceBy:language:'alpha2':'English' }} version</i>
+        </span>
         <p>Original Size: {{ item?.width }} x {{ item?.height }}</p>
         <p>Vote <b>{{ item?.vote_average | number:'0.1-1' }}</b> Count <b>{{item?.vote_count}}</b></p>
       </div>

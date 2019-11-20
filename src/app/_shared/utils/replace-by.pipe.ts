@@ -6,9 +6,10 @@ import {Pipe, PipeTransform} from '@angular/core';
 export class ReplaceByPipe implements PipeTransform {
 
   transform(startedValue: any, refList: any[], findTerm: string, targetTerm: string): any {
-
     // if value is defined else return value for another pass
-    if (startedValue) {
+    const exclusionArray = ['xx'];
+
+    if (!exclusionArray.includes(startedValue)) {
       if (typeof startedValue !== 'string') {
         return this.getNewValues(startedValue, refList, findTerm, targetTerm);
       } else {
@@ -20,8 +21,12 @@ export class ReplaceByPipe implements PipeTransform {
   }
 
   getNewValue(startedValue, refList, findTerm, targetTerm): string {
+    console.log(startedValue);
+
     const searchRef = refList.find(y => y[findTerm] === startedValue);
-    return searchRef[targetTerm];
+    if (searchRef !== undefined) {
+      return searchRef[targetTerm];
+    }
   }
 
   getNewValues(array, refList, findTerm, targetTerm): Array<string> {

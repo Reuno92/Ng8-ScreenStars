@@ -1,5 +1,5 @@
 <section class="mt-2">
-  <div *ngFor="let item of (similarTvShow$ | async)?.results"
+  <div *ngFor="let item of (this.similarTvShow$ | async)?.results"
        [id]="item?.name"
        class="card similar"
        [ngStyle]="{

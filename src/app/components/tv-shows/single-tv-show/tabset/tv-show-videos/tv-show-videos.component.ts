@@ -4,6 +4,7 @@ import {AccessIdService} from '../../../../../_shared/services/access-id.service
 import {Observable} from 'rxjs';
 import {Video, VideoResult} from '../../../../../_shared/models/TV';
 import {TvShowHttpService} from '../../../../../_shared/services/http/tv-show-http.service';
+import * as Lang from '../../../../../json/language-codes.json';
 
 @Component({
   selector: 'app-tv-show-videos',
@@ -20,7 +21,10 @@ export class TvShowVideosComponent implements OnInit {
   private videos$: Observable<Video>;
   private onAir: VideoResult;
 
+  private language: any;
+
   constructor(private tvShowHttpService: TvShowHttpService, private accessId: AccessIdService) {
+    this.language = (Lang as any).default;
   }
 
   public ngOnInit() {

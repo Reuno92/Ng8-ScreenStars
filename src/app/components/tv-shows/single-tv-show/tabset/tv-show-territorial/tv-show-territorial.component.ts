@@ -5,6 +5,7 @@ import {catchError} from 'rxjs/operators';
 import {ActivatedRoute} from '@angular/router';
 import {Translation, Rating, Territorial} from '../../../../../_shared/models/TV';
 import {TvShowHttpService} from '../../../../../_shared/services/http/tv-show-http.service';
+import * as countries from '../../../../../json/country-codes.json';
 
 @Component({
   selector: 'app-tv-show-territorial',
@@ -15,17 +16,20 @@ export class TvShowTerritorialComponent implements OnInit {
 
   private id: number;
   private error: HttpErrorResponse;
-  private loadingComponent: Boolean;
+  private loadingComponent: boolean;
 
   public contentRating$: Observable<Rating>;
   public translations$: Observable<Translation>;
   public results: Territorial;
+
+  public countries: any;
 
   constructor(
     private tvShowHttpService: TvShowHttpService,
     private route: ActivatedRoute
   ) {
     this.loadingComponent = false;
+    this.countries = (countries as any).default;
   }
 
   ngOnInit(): void {

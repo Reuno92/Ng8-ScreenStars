@@ -35,8 +35,6 @@ export class TvShowSimilarComponent implements OnInit {
 
   ngOnInit() {
     this.getSimilarTvShow();
-
-    this.similarTvShow$.subscribe( data => console.log(data));
   }
 
   getSimilarTvShow() {

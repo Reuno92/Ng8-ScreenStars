@@ -5,6 +5,7 @@ import {AccessIdService} from '../../../../../_shared/services/access-id.service
 import {TvShowHttpService} from '../../../../../_shared/services/http/tv-show-http.service';
 import {Observable} from 'rxjs';
 import {IMAGES_HOST, IMAGES_HOST_SECURE} from '../../../../../constant/api.constant';
+import * as Lang from '../../../../../json/language-codes.json';
 
 @Component({
   selector: 'app-tv-show-visuals',
@@ -25,6 +26,8 @@ export class TvShowVisualsComponent implements OnInit {
   public readonly backdropSizes: Array<string>;
   public readonly posterSizes: Array<string>;
 
+  private language: any;
+
   constructor(private tvShowHttpService: TvShowHttpService,
               private accessIdService: AccessIdService) {
     this.imagesLinksSecure = IMAGES_HOST_SECURE;
@@ -33,6 +36,7 @@ export class TvShowVisualsComponent implements OnInit {
     // TODO create a resolver pointing to the endpoint configuration
     this.backdropSizes = ['w300', 'w780', 'w1280', 'original'];
     this.posterSizes = ['w92', 'w154', 'w185', 'w342', 'w500', 'w780', 'original'];
+    this.language = (Lang as any).default;
   }
 
   public ngOnInit(): void {

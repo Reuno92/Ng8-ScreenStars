@@ -10,8 +10,11 @@
   <ul class="list-group list-group-flush">
     <li class="list-group-item bg-transparent d-flex justify-content-between"
         *ngFor="let item of (this.videos$ | async)?.results">
-      <span><b>{{ item?.name }}</b> - <i [ngClass]="getTag(item?.type)">{{ item?.type }}</i> - [{{ item?.iso_639_1 }}
-        -{{item?.iso_3166_1}}]</span>
+      <div>
+        <i [ngClass]="getTag(item?.type)" class="mr-3">{{ item?.type }}</i>
+        <b class="mr-3">{{ item?.name }}</b>
+        <i class="badge badge-light">{{ item?.iso_639_1 | replaceBy:this.language:'alpha2':'English' }} only</i>
+      </div>
       <button class="btn btn-sm btn-primary" (click)="change(item)">Watch</button>
     </li>
   </ul>
