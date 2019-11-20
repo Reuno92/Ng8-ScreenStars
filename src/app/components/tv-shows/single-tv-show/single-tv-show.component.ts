@@ -16,7 +16,7 @@ import {TV} from '../../../_shared/models/TV';
 })
 export class SingleTVShowComponent implements OnInit {
 
-  public id: string = this.route.snapshot.paramMap.get('id');
+  public id: string;
   public tvShow$: Observable<TV>;
   public loadingTvShow: boolean;
   public error: HttpErrorResponse;
@@ -42,7 +42,12 @@ export class SingleTVShowComponent implements OnInit {
   }
 
   public ngOnInit() {
+    this.route.params.subscribe(
+      data => this.id = data.id,
+      err => this.error = err,
+    );
     this.getTVShow();
+    this.loadingTvShow = false;
   }
 
   private getTVShow() {

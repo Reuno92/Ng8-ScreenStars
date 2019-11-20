@@ -1,34 +1,35 @@
-import {Component, Input, OnInit} from '@angular/core';
-import {NavigationEnd, Router} from '@angular/router';
+import {AfterViewChecked, ChangeDetectionStrategy, ChangeDetectorRef, Component, Input, OnInit, ViewChild} from '@angular/core';
+import {Router} from '@angular/router';
 import {Tabset} from '../../models/tabset';
 import {NgbTabset} from '@ng-bootstrap/ng-bootstrap';
 
 @Component({
   selector: 'app-tabset',
   templateUrl: './tabset.component.html',
-  styleUrls: ['./tabset.component.scss']
+  styleUrls: ['./tabset.component.scss'],
 })
-export class TabsetComponent implements OnInit {
+export class TabsetComponent implements OnInit, AfterViewChecked {
   @Input() public justification = 'justified';
   @Input() public tabsOptions: Array<Tabset | null>;
   @Input() public id: string;
 
-  private tabs: NgbTabset;
+  @ViewChild('appTabSet', {read: false, static: false}) public tabSet: NgbTabset;
 
-  public activeTabUrl: any;
   constructor(private router: Router) {}
 
   public ngOnInit(): void {
-    this.router.events.subscribe( event => {
-      if (event instanceof NavigationEnd) {
-        this.activeTabUrl = event.urlAfterRedirects;
-      }
-    });
+  }
+
+  public ngAfterViewChecked(): void {
+    const url = this.router.url;
+    const arrRouter: Array<string> = url.split('/');
+    const lastUrn: number = arrRouter.length - 1;
+    const activeTab: string = arrRouter[lastUrn].charAt(0).toUpperCase() + arrRouter[lastUrn].slice(1);
+    this.tabSet.select(activeTab);
   }
 
   public onTabChange(event): void {
     const route = {};
-    const actualUrl = this.router.url;
     this.tabsOptions.map(data => route[data.name] = data.urlPrefix + this.id + data.urlSuffix);
     this.router.navigateByUrl(route[event.nextId]);
   }
