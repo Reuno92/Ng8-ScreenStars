@@ -25,6 +25,7 @@ export class TabsetComponent implements OnInit {
 
   public onTabChange(event): void {
     const route = {};
+    const actualUrl = this.router.url;
     this.tabs.map( data => route[data.name] = data.urlPrefix + this.id + data.urlSuffix);
     this.router.navigateByUrl(route[event.nextId]);
   }

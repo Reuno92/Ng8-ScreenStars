@@ -165,18 +165,19 @@
               </div>
             </section>
 
-            <section class="col-12" *ngIf="(this.tvShow$| async)?.next_episode_to_air !== null">
+            <section class="col-12 mt-2" *ngIf="(this.tvShow$| async)?.next_episode_to_air !== null">
               <div class="card episode-card" [ngStyle]="{
               'background-image': 'url(' + this.imagesLinks + 'original' + (this.tvShow$| async)?.next_episode_to_air.still_path + ')',
               'background-size' : 'cover' }">
                 <div class="card-header">
-                  <b>Last episode</b> - <small>{{(this.tvShow$| async)?.next_episode_to_air.air_date}}</small>
+                  <b>Next episode</b> -
+                  <small>{{(this.tvShow$| async)?.next_episode_to_air.air_date | amTimeAgo}}</small>
                 </div>
 
                 <div class="card-body">
                   <h3>[S{{ (this.tvShow$| async)?.next_episode_to_air.season_number }}
-                    ep. {{ (this.tvShow$| async)?.next_episode_to_air.episode_number }}
-                    ] {{ (this.tvShow$| async)?.next_episode_to_air.name }}</h3>
+                    ep. {{ (this.tvShow$| async)?.next_episode_to_air.episode_number }}]
+                    {{ (this.tvShow$| async)?.next_episode_to_air.name }}</h3>
                   <p>{{(this.tvShow$| async)?.next_episode_to_air.overview}}</p>
                 </div>
 
@@ -187,7 +188,7 @@
                       <p>Vote count</p>
                     </div>
                     <div class="col-12 col-md-3 text-center">
-                      <b class="h4">{{(this.tvShow$| async)?.next_episode_to_air.vote_average | number: '0.1-1'}}</b>
+                      <b class="h4">{{(this.tvShow$| async)?.next_episode_to_air.vote_average | number: '0.0-1'}}</b>
                       <p>Vote average</p>
                     </div>
                   </section>

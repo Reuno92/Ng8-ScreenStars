@@ -21,8 +21,6 @@ export class ReplaceByPipe implements PipeTransform {
   }
 
   getNewValue(startedValue, refList, findTerm, targetTerm): string {
-    console.log(startedValue);
-
     const searchRef = refList.find(y => y[findTerm] === startedValue);
     if (searchRef !== undefined) {
       return searchRef[targetTerm];
