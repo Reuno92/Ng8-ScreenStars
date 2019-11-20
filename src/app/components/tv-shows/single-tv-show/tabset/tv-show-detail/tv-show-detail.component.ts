@@ -23,9 +23,12 @@ export class TvShowDetailComponent implements OnInit {
   public imagesLinks = IMAGES_HOST_SECURE;
   public loadingComponent: boolean;
 
+  public missingPlaceholder: string;
+
   constructor(private route: ActivatedRoute,
               private tvService: TvShowHttpService) {
     this.loadingTvShow = true;
+    this.missingPlaceholder = 'assets/missing/logo-missing_en_secondary.svg';
   }
 
   public ngOnInit(): void {
@@ -45,5 +48,9 @@ export class TvShowDetailComponent implements OnInit {
       (err: HttpErrorResponse) => this.error = err,
       () => this.loadingComponent = false
     );
+  }
+
+  private onImageLoad() {
+
   }
 }

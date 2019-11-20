@@ -8,10 +8,11 @@ import {HttpClientModule} from '@angular/common/http';
 // Third party modules
 import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
 import {YouTubePlayerModule} from '@angular/youtube-player';
-
+import {ImgFallbackModule} from 'ngx-img-fallback';
 const THIRD_PARTY_MODULES = [
   NgbModule,
-  YouTubePlayerModule
+  YouTubePlayerModule,
+  ImgFallbackModule
 ];
 
 // App Component

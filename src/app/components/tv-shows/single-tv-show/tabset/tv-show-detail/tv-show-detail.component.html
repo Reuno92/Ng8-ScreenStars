@@ -108,12 +108,13 @@
 
             <div class="col-12 col-md-3 text-center"
                  *ngFor="let company of (this.tvShow$ | async)?.production_companies">
-              <img height="153" [src]="imagesLinks + 'w92' + company.logo_path" alt="">
-              <ng-container *ngIf="company.origin_country; then origin; else nullify"></ng-container>
+              <img height="153" [src]="imagesLinks + 'w92' + company.logo_path" src-fallback="{{ missingPlaceholder }}"
+                   alt="Logo {{ company.name }}">
+              <ng-container *ngIf="company.origin_country; then origin; else isNull"></ng-container>
               <ng-template #origin>
                 <p>{{ company.name }} ({{ company.origin_country }})</p>
               </ng-template>
-              <ng-template #nullify>
+              <ng-template #isNull>
                 <p>{{ company.name }}</p>
               </ng-template>
             </div>
