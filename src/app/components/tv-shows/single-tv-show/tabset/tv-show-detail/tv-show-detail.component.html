@@ -74,9 +74,11 @@
           <div id="genres" class="col-12 col-md-4">
             <b>Genres</b>
             <div class="row">
-              <section *ngFor="let genre of (this.tvShow$ | async)?.genres"
-                       class="col-12 d-flex justify-content-between">
-                <span class="badge badge-secondary align-self-center">{{ genre.name }}</span>
+              <section class="col-12 d-flex flex-wrap">
+                <span class="badge badge-secondary align-self-center mr-1"
+                      *ngFor="let genre of (this.tvShow$ | async)?.genres">
+                  {{ genre.name }}
+                </span>
               </section>
             </div>
           </div>
@@ -121,8 +123,9 @@
           <section class="row">
             <div class="col-12 col-md-3 text-center"
                  *ngFor="let company of (this.tvShow$ | async)?.production_companies">
-              <img height="153" [src]="imagesLinks + 'w92' + company.logo_path"
+              <img [src]="imagesLinks + 'w92' + company.logo_path"
                    src-fallback="{{ missingPlaceholder }}"
+                   class="logo-detail"
                    alt="Logo {{ company.name }}">
               <ng-container *ngIf="company.origin_country; then origin; else isNull"></ng-container>
               <ng-template #origin>

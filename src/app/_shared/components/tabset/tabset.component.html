@@ -1,6 +1,7 @@
-<ngb-tabset [justify]="this.justify"
+<ngb-tabset [destroyOnHide]="true"
+            [justify]="this.justification"
             (tabChange)="onTabChange($event)">
-  <ngb-tab *ngFor="let tab of tabs" [id]="tab.name" [title]="tab.name">
+  <ngb-tab *ngFor="let tab of tabsOptions" [id]="tab.name" [title]="tab.name">
     <ng-template ngbTabContent>
       <router-outlet></router-outlet>
     </ng-template>

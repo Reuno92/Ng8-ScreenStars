@@ -1,6 +1,7 @@
 import {Component, Input, OnInit} from '@angular/core';
 import {NavigationEnd, Router} from '@angular/router';
 import {Tabset} from '../../models/tabset';
+import {NgbTabset} from '@ng-bootstrap/ng-bootstrap';
 
 @Component({
   selector: 'app-tabset',
@@ -8,9 +9,11 @@ import {Tabset} from '../../models/tabset';
   styleUrls: ['./tabset.component.scss']
 })
 export class TabsetComponent implements OnInit {
-  @Input() public justify: string = 'justified';
-  @Input() public tabs: Array<Tabset | null>;
+  @Input() public justification = 'justified';
+  @Input() public tabsOptions: Array<Tabset | null>;
   @Input() public id: string;
+
+  private tabs: NgbTabset;
 
   public activeTabUrl: any;
   constructor(private router: Router) {}
@@ -26,7 +29,7 @@ export class TabsetComponent implements OnInit {
   public onTabChange(event): void {
     const route = {};
     const actualUrl = this.router.url;
-    this.tabs.map( data => route[data.name] = data.urlPrefix + this.id + data.urlSuffix);
+    this.tabsOptions.map(data => route[data.name] = data.urlPrefix + this.id + data.urlSuffix);
     this.router.navigateByUrl(route[event.nextId]);
   }
 

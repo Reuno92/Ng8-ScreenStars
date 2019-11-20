@@ -52,6 +52,15 @@ input.form-control {
 .fa-mars {
   color: #007bff;
 }
+
+// Tv-show Detail
+.logo-detail {
+  display: flex;
+  width: 100%;
+  min-height: 125px;
+  object-fit: contain;
+}
+
 // Card columns by defaults
 .card-columns {
   @include media-breakpoint-only(xs) {

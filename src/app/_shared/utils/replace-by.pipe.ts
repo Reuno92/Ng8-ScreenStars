@@ -7,7 +7,7 @@ export class ReplaceByPipe implements PipeTransform {
 
   transform(startedValue: any, refList: any[], findTerm: string, targetTerm: string): any {
     // if value is defined else return value for another pass
-    const exclusionArray = ['xx'];
+    const exclusionArray = ['xx', '', ' ', null];
 
     if (!exclusionArray.includes(startedValue)) {
       if (typeof startedValue !== 'string') {
