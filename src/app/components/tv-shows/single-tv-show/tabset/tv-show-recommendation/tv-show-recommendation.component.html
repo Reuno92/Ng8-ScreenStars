@@ -14,7 +14,7 @@
         <header class="card-header">
           <h2>{{ items?.name }} <small>({{ items?.original_name }})</small></h2>
           <div class="d-flex justify-content-between scores-dates">
-            <span>Average: <b>{{ items?.vote_average }}</b></span>
+            <span>Average: <b>{{ items?.vote_average | number: '0.0-1' }}</b></span>
             <span>Count: <b>{{ items?.vote_count }}</b></span>
             <span>Popularity's score: <b>{{ items?.popularity }}</b></span>
             <span>First air Date: <b>{{ items?.first_air_date | date:'d/MM/yy' }}</b></span>

@@ -15,12 +15,12 @@
         <div class="d-flex justify-content-around align-middle">
 
           <div class="mb-0 text-center">
-            <b class="h4">{{ (this.tvShow$ | async)?.vote_average }}</b>
+            <b class="h4">{{ (this.tvShow$ | async)?.vote_average | number: '0.1-1' }}</b>
             <p class="mt-4">Vote average
             <p>
           </div>
 
-          <div class="mb-0 Text-center">
+          <div class="mb-0 text-center">
             <b class="h4">{{ (this.tvShow$ | async)?.vote_count }}</b>
             <p class="mt-4">Vote count</p>
           </div>
@@ -41,10 +41,12 @@
             <small>{{ (this.tvShow$ | async)?.last_air_date | amTimeAgo  }}</small>
             <p>Last air date</p>
           </div>
+
         </div>
       </div>
 
       <div class="col-12 col-md-4">
+
         <div>
           <h3>Overview</h3>
           <p class="overview">{{ (this.tvShow$ | async)?.overview }}</p>
@@ -54,6 +56,7 @@
           {{ (this.tvShow$ | async)?.number_of_seasons }} seasons with {{ (this.tvShow$ | async)?.number_of_episodes}}
           episodes
         </h2>
+
         <div class="row" *ngIf="(this.tvShow$ | async)?.seasons">
           <div class="season col-12 col-sm-6 col-md-4 text-center mb-2"
                *ngFor="let season of (this.tvShow$ | async)?.seasons | slice:1:(this.tvShow$ | async)?.seasons.length">
@@ -63,6 +66,7 @@
             <p class="font-weight-lighter">{{ season?.air_date }}</p>
           </div>
         </div>
+
       </div>
 
       <div class="col-12 col-md-8">
@@ -81,7 +85,8 @@
             <b>Origin Country</b>
             <div class="row">
               <div class="col-12 col-md-9 d-flex justify-content-between"
-                   *ngFor="let country of (this.tvShow$ | async)?.origin_country">
+                   *ngFor="let country of (this.tvShow$ | async)?.origin_country
+                   | replaceBy:this.countries:'ISO3166-1-Alpha-2': 'official_name_en' ">
                 {{ country }}
               </div>
             </div>
@@ -91,11 +96,13 @@
             <b>Original Language</b>
             <div class="row">
               <p class="col-12 col-md-9 d-flex justify-content-between">
-                {{ (this.tvShow$ | async)?.original_language }}
+                {{ (this.tvShow$ | async)?.original_language
+								| replaceBy:this.languages:'alpha2':'English'}}
               </p>
             </div>
           </div>
         </section>
+
         <section id="creator">
           <b>Created by</b>
           <div class="row">
@@ -106,10 +113,10 @@
             </section>
           </div>
         </section>
+
         <section id="production-companies" class="mt-3">
           <b>Production Companies</b>
           <section class="row">
-
             <div class="col-12 col-md-3 text-center"
                  *ngFor="let company of (this.tvShow$ | async)?.production_companies">
               <img height="153" [src]="imagesLinks + 'w92' + company.logo_path"
@@ -143,12 +150,12 @@
                 </div>
                 <div class="card-footer">
                   <section class="row">
-                    <div class="col-12 col-md-2">
+                    <div class="col-12 col-md-2 text-center">
                       <b class="h2">{{(this.tvShow$| async)?.last_episode_to_air.vote_count}}</b>
                       <p>Vote count</p>
                     </div>
-                    <div class="col-12 col-md-3">
-                      <b class="h2">{{(this.tvShow$| async)?.last_episode_to_air.vote_average}}</b>
+                    <div class="col-12 col-md-3 text-center">
+                      <b class="h2">{{(this.tvShow$| async)?.last_episode_to_air.vote_average  | number:'0.0-1'}}</b>
                       <p>Vote average</p>
                     </div>
                   </section>
@@ -163,27 +170,29 @@
                 <div class="card-header">
                   <b>Last episode</b> - <small>{{(this.tvShow$| async)?.next_episode_to_air.air_date}}</small>
                 </div>
+
                 <div class="card-body">
                   <h3>[S{{ (this.tvShow$| async)?.next_episode_to_air.season_number }}
                     ep. {{ (this.tvShow$| async)?.next_episode_to_air.episode_number }}
                     ] {{ (this.tvShow$| async)?.next_episode_to_air.name }}</h3>
                   <p>{{(this.tvShow$| async)?.next_episode_to_air.overview}}</p>
                 </div>
+
                 <div class="card-footer">
                   <section class="row">
-                    <div class="col-12 col-md-2">
-                      <b class="h2">{{(this.tvShow$| async)?.next_episode_to_air.vote_count}}</b>
+                    <div class="col-12 col-md-2 text-center">
+                      <b class="h4">{{(this.tvShow$| async)?.next_episode_to_air.vote_count}}</b>
                       <p>Vote count</p>
                     </div>
-                    <div class="col-12 col-md-3">
-                      <b class="h2">{{(this.tvShow$| async)?.next_episode_to_air.vote_average}}</b>
+                    <div class="col-12 col-md-3 text-center">
+                      <b class="h4">{{(this.tvShow$| async)?.next_episode_to_air.vote_average | number: '0.1-1'}}</b>
                       <p>Vote average</p>
                     </div>
                   </section>
                 </div>
+
               </div>
             </section>
-
           </div>
         </section>
       </div>

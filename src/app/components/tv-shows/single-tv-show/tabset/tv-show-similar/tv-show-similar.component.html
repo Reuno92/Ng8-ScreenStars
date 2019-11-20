@@ -17,7 +17,7 @@
             {{ item?.name }} <small>({{ item?.original_name }})</small>
           </h2>
           <div class="d-flex justify-content-between scores-dates">
-            <span>Average: <b>{{ item?.vote_average }}</b></span>
+            <span>Average: <b>{{ item?.vote_average | number: '0.0-1' }}</b></span>
             <span>Count: <b>{{ item?.vote_count }}</b></span>
             <span>Popularity's score: <b>{{ item?.popularity }}</b></span>
             <span>First air Date: <b>{{ item?.first_air_date | date:'d/MM/yy' }}</b></span>

@@ -56,6 +56,7 @@ import {CommonTabsetService} from './_shared/services/tabset/common-tabset.servi
 import {SingleSeasonComponent} from './components/tv-shows/single-season/single-season.component';
 import {SingleEpisodeComponent} from './components/tv-shows/single-episode/single-episode.component';
 import {MomentModule} from 'ngx-moment';
+import {ReplaceByPipe} from './_shared/utils/replace-by.pipe';
 const APP_COMPONENTS = [
   HomeComponent,
   NotFoundComponent,
@@ -83,7 +84,8 @@ const APP_COMPONENTS = [
     SinglePersonComponent,
     TabsetComponent,
     SingleSeasonComponent,
-    SingleEpisodeComponent
+    SingleEpisodeComponent,
+    ReplaceByPipe
   ],
   imports: [
     BrowserModule,
