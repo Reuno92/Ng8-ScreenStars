@@ -1,12 +1,14 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {ActivatedRoute} from '@angular/router';
-import {Observable } from 'rxjs';
+import {BehaviorSubject, Observable} from 'rxjs';
 import {TvShowHttpService} from '../../../_shared/services/http/tv-show-http.service';
 import {HttpErrorResponse} from '@angular/common/http';
 import {IMAGES_HOST_SECURE} from '../../../constant/api.constant';
 import {CommonTabsetService} from '../../../_shared/services/tabset/common-tabset.service';
 import {Tabset} from '../../../_shared/models/tabset';
 import {TV} from '../../../_shared/models/TV';
+import * as Countries from '../../../json/country-codes.json';
+import * as Lang from '../../../json/language-codes.json';
 
 @Component({
   selector: 'app-single-tv-show',
@@ -17,12 +19,16 @@ import {TV} from '../../../_shared/models/TV';
 export class SingleTVShowComponent implements OnInit {
 
   public id: string;
-  public tvShow$: Observable<TV>;
+  public tvShow$: BehaviorSubject<TV>;
   public loadingTvShow: boolean;
   public error: HttpErrorResponse;
   public imagesLinks: string;
 
+  public missingPlaceholder: string;
   public tabsOptions: Array<Tabset>;
+
+  public countries: any;
+  public languages: any;
 
   public constructor(private route: ActivatedRoute,
                      private tvService: TvShowHttpService,
@@ -39,6 +45,9 @@ export class SingleTVShowComponent implements OnInit {
       {id: 8, name: 'Visuals', urlPrefix: '/tv-show/', urlSuffix: '/visuals'}
     ];
     this.tvShowTabsetService.tabsOptions = this.tabsOptions;
+    this.countries = (Countries as any).default;
+    this.languages = (Lang as any).default;
+    this.missingPlaceholder = 'assets/missing/logo-missing_en_dark.svg';
   }
 
   public ngOnInit() {
@@ -52,6 +61,14 @@ export class SingleTVShowComponent implements OnInit {
 
   private getTVShow() {
     this.loadingTvShow = true;
-    this.tvShow$ = this.tvService.getTVShow(this.id);
+    this.tvService.getTVShow(this.id).subscribe(
+      data => this.tvShow$ = new BehaviorSubject<TV>(data),
+      err => this.error = err,
+      () => {
+        this.loadingTvShow = false;
+        this.tvShow$.asObservable();
+        console.log(this.tvShow$.getValue());
+      }
+    );
   }
 }
