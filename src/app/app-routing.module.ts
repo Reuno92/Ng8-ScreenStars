@@ -102,17 +102,15 @@ export const routes: Routes = [
                 path: 'visuals',
                 component: TvShowVisualsComponent
               },
-              {
-                path: 'season/:seasonNumber',
-                component: SingleSeasonComponent,
-                children: [
-                  {
-                    path: 'episode/:episodeNumber',
-                    component: SingleEpisodeComponent
-                  }
-                ]
-              }
             ]
+          },
+          {
+            path: 'tv-show/:id/season/:seasonNumber',
+            component: SingleSeasonComponent,
+          },
+          {
+            path: 'tv-show/:id/season/:seasonNumber/episode/:episodeNumber',
+            component: SingleEpisodeComponent,
           },
           {
             path: 'person/:id/view',
